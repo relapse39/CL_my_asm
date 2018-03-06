@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshevche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmelehov <dmelehov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:01:38 by dshevche          #+#    #+#             */
-/*   Updated: 2018/03/06 14:01:40 by dshevche         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:39:57 by dmelehov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-
-
-
-
-
-int		ft_inst_check(char *str)
+int			ft_inst_check(char *str)
 {
 	int		i;
 
@@ -28,15 +23,14 @@ int		ft_inst_check(char *str)
 	return (0);
 }
 
-
-line_list  *get_last(line_list *list)
+line_list	*get_last(line_list *list)
 {
-	while(list->next)
+	while (list->next)
 		list = list->next;
 	return (list);
 }
 
-int ft_is_empty(char *str)
+int			ft_is_empty(char *str)
 {
 	int i;
 	int j;
@@ -91,9 +85,9 @@ int			ft_get_pos(const char *big, const char *little)
 	return (0);
 }
 
-char 	*ft_get_l_i_str(char *str)
+char		*ft_get_l_i_str(char *str)
 {
-	if(ft_is_label(str))
+	if (ft_is_label(str))
 		return ("LABEL");
 	else
 		return ("INSTRUCTION");

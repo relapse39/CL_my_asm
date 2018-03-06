@@ -3,27 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   helper2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshevche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmelehov <dmelehov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 13:58:58 by dshevche          #+#    #+#             */
-/*   Updated: 2018/03/06 13:59:00 by dshevche         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:43:11 by dmelehov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "asm.h"
 
-void        ft_print_n_err(void)
+void		ft_print_n_err(void)
 {
-    ft_printf("Syntax error - unexpected end of input ");
-    ft_printf("(Perhaps you forgot to end with a newline ?)");
+	ft_printf("Syntax error - unexpected end of input ");
+	ft_printf("(Perhaps you forgot to end with a newline ?)");
 }
 
-
-int ft_is_label(char *str)
+int			ft_is_label(char *str)
 {
+	int	i;
 
-	int i;
 	if (str == NULL)
 		return (0);
 	i = -1;
@@ -35,7 +33,7 @@ int ft_is_label(char *str)
 		return (0);
 }
 
-int 	ft_atoi_ret( int neg)
+int			ft_atoi_ret(int neg)
 {
 	if (neg)
 		return (0);
@@ -43,11 +41,11 @@ int 	ft_atoi_ret( int neg)
 		return (2147483647);
 }
 
-int		ft_atoi_1(const char *str)
+int			ft_atoi_1(const char *str)
 {
-	int i;
-	uintmax_t   nbr;
-	int negative;
+	int			i;
+	uintmax_t	nbr;
+	int			negative;
 
 	nbr = 0;
 	negative = 0;
@@ -72,7 +70,7 @@ int		ft_atoi_1(const char *str)
 		return (int)(nbr);
 }
 
-int     ft_check_label_char(line_list *list, int n)
+int			ft_check_label_char(line_list *list, int n)
 {
 	int i;
 	int pos;
@@ -80,7 +78,7 @@ int     ft_check_label_char(line_list *list, int n)
 	i = -1;
 	if (list->ent.com[n][0] == '%')
 		i = 0;
-	while(list->ent.com[n][++i])
+	while (list->ent.com[n][++i])
 	{
 		if (ft_strchr(LABEL_CHARS, list->ent.com[n][++i]) == 0)
 		{
