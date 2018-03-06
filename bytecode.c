@@ -77,6 +77,15 @@ static unsigned char	ft_get_op(char *inst, char *line)
 
 
 
+int 	ft_atoi_ret( int neg)
+{
+
+		if (neg)
+			return (0);
+		else
+			return (2147483647);
+}
+
 
 int		ft_atoi_1(const char *str)
 {
@@ -98,10 +107,7 @@ int		ft_atoi_1(const char *str)
 		nbr *= 10;
 		nbr += (int)str[i] - '0';
 		if (nbr > MY_LONG_MAX)
-			if (negative)
-				return (0);
-			else
-				return (2147483647);
+			return (ft_atoi_ret(negative));
 		i++;
 	}
 	if (negative == 1)
