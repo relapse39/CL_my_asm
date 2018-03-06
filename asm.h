@@ -38,9 +38,9 @@ typedef struct line_list_t line_list;
 struct 			line_t {
     char 		*raw_line;
     char 		**com;
-    int 		first_type;
-    int 		second_type;
-    int 		third_type;
+    int 		f_type;
+    int 		s_type;
+    int 		t_type;
     int		    args_n;
     int 		pos;
     int 		length;
@@ -61,6 +61,8 @@ typedef struct	s_main
     int 			name_c;
 }				t_main;
 
+int 				ft_check_lables(line_list *list);
+int     			ft_check_label_char(line_list *list, int n);
 int					ft_atoi_1(const char *str);
 int 				ft_atoi_ret( int neg);
 void                ft_print_n_err(void);

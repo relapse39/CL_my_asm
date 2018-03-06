@@ -20,11 +20,11 @@
 void	ft_add_type(line_list *line,  int com_n, int type)
 {
 	if (com_n == 0)
-		line->ent.first_type = type;
+		line->ent.f_type = type;
 	else if (com_n == 1)
-		line->ent.second_type = type;
+		line->ent.s_type = type;
 	else if (com_n == 2)
-		line->ent.third_type = type;
+		line->ent.t_type = type;
 }
 
 

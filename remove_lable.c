@@ -13,51 +13,10 @@
 
 #include "asm.h"
 
-int     ft_check_label_char(line_list *list, int n)
-{
-    int i;
-
-    i = -1;
-    if (list->ent.com[n][0] == '%')
-        i = 0;
-    while(list->ent.com[n][++i])
-    {
-        if (ft_strchr(LABEL_CHARS, list->ent.com[n][++i]) == 0)
-        {
-            ft_printf("Lexical error at [");
-			ft_printf("%d:", list->ent.nbr);
-			ft_printf("%d]", ft_get_pos(list->ent.raw_line, list->ent.com[n]) + i + 1);
-            return (-1);
-        }
-    }
-    return (0);
-
-}
 
 
 
-int 	ft_check_lables(line_list *list)
-{
-    int     i;
 
-
-    while(list)
-    {
-		i = -1;
-        while(list->ent.com[++i])
-        {
-            if (list->ent.com[i] != NULL)
-			{
-				if ((list->ent.com[i][0] == ':') ||
-						(list->ent.com[i][0] == '%' && list->ent.com[i][1] == ':'))
-					if (ft_check_label_char(list, i) == -1)
-						return (-1);
-			}
-        }
-        list = list->next;
-    }
-    return (0);
-}
 
 
 int 	ft_is_duplicate(line_list *list)
@@ -84,36 +43,37 @@ int 	ft_is_duplicate(line_list *list)
 	return (0);
 }
 
+char *ft_get_bytes2(line_list *list, line_list *tmp)
+{
+	char *ret;
+	char *tmp_s;
+	tmp_s = ft_itoa(list->ent.pos - tmp->ent.pos);
+	ret = malloc(sizeof(ft_strlen(tmp_s) + 1));
+	ret[0] = '%';
+	ret[1] = '\0';
+	ret = ft_strcat(ret,tmp_s);
+	ret[ft_strlen(ret) + 1] = '\0';
+	free(tmp_s);
+	return (ret);
+}
+
 char *ft_get_byte(line_list *list, line_list *tmp, int i, char *err)
 {
 	char *cmd;
 	int 	flag;
-	char *ret;
-	char *tmp_1;
 
 	flag = 0;
-    if (tmp->ent.com[i][0] == ':') {
-		flag = 1;
-		cmd = tmp->ent.com[i] + 1;
-	}
-	else
-        cmd = tmp->ent.com[i] + 2;
+	tmp->ent.com[i][0] == ':' ? flag = 1 : (0);
+	tmp->ent.com[i][0] == ':' ? cmd = tmp->ent.com[i] + 1 : (0);
+	tmp->ent.com[i][0] != ':' ? cmd = tmp->ent.com[i] + 2 : (0);
 	while (list)
 	{
-		if (list->ent.com[0] && ft_strncmp(cmd, list->ent.com[0], ft_strlen(cmd)) == 0
+		if (list->ent.com[0]
+			&& ft_strncmp(cmd, list->ent.com[0], ft_strlen(cmd)) == 0
 			&& (list->ent.com[0][ft_strlen(cmd)] == ':'))
 		{
 			if (flag == 0)
-			{
-				tmp_1 = ft_itoa(list->ent.pos - tmp->ent.pos);
-				ret = malloc(sizeof(ft_strlen(tmp_1) + 1));
-				ret[0] = '%';
-				ret[1] = '\0';
-				ret = ft_strcat(ret,tmp_1);
-				ret[ft_strlen(ret) + 1] = '\0';
-				free(tmp_1);
-				return (ret);
-			}
+				return (ft_get_bytes2(list, tmp));
 			return (ft_itoa(list->ent.pos - tmp->ent.pos));
 		}
 		list = list->next;
@@ -139,18 +99,10 @@ int 	ft_redirect_lables(line_list *list)
 		i = -1;
 		while(tmp->ent.com[++i])
 		{
-            if (tmp->ent.com[i] && tmp->ent.com[i][0] == ':'
-				&& tmp->ent.com[i][1] )
-			{
-				error_c = ft_strdup(tmp->ent.com[i]);
-				free(tmp->ent.com[i]);
-                 tmp->ent.com[i] = ft_get_byte(list, tmp, i,error_c);
-				free(error_c);
-				if (tmp->ent.com[i] == NULL)
-                    return (-1);
-			}
-			else if ((tmp->ent.com[i] != NULL && tmp->ent.com[i][0] == '%'
-				&& tmp->ent.com[i][1] == ':' && tmp->ent.com[i][2]))
+            if ((tmp->ent.com[i] && tmp->ent.com[i][0] == ':'
+				&& tmp->ent.com[i][1])
+				|| (tmp->ent.com[i][0] == '%'
+					&& tmp->ent.com[i][1] == ':' && tmp->ent.com[i][2]))
 			{
 				error_c = ft_strdup(tmp->ent.com[i]);
 				free(tmp->ent.com[i]);
@@ -159,7 +111,6 @@ int 	ft_redirect_lables(line_list *list)
 				if (tmp->ent.com[i] == NULL)
 					return (-1);
 			}
-
 		}
 		tmp = tmp->next;
 	}

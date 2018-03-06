@@ -24,9 +24,9 @@ static line_list	*create_file(char *line, int nbr)
 		if ((new->ent.com = ft_split_cmd(line)) == NULL)
 			return (NULL);
 		new->ent.args_n = 0;
-		new->ent.first_type = 0;
-		new->ent.second_type = 0;
-		new->ent.third_type = 0;
+		new->ent.f_type = 0;
+		new->ent.s_type = 0;
+		new->ent.t_type = 0;
 		new->ent.pos = 0;
 		new->ent.length = 0;
 		new->next = NULL;

@@ -71,3 +71,25 @@ int		ft_atoi_1(const char *str)
 	else
 		return (int)(nbr);
 }
+
+int     ft_check_label_char(line_list *list, int n)
+{
+	int i;
+	int pos;
+
+	i = -1;
+	if (list->ent.com[n][0] == '%')
+		i = 0;
+	while(list->ent.com[n][++i])
+	{
+		if (ft_strchr(LABEL_CHARS, list->ent.com[n][++i]) == 0)
+		{
+			pos = ft_get_pos(list->ent.raw_line, list->ent.com[n]);
+			ft_printf("Lexical error at [");
+			ft_printf("%d:", list->ent.nbr);
+			ft_printf("%d]", pos + i + 1);
+			return (-1);
+		}
+	}
+	return (0);
+}

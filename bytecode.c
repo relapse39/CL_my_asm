@@ -44,15 +44,15 @@ void			ft_arg_code(unsigned char *bytes, line_list *list, int *index)
 	if (ft_is_need_arg_code(list->ent.com[0]) == 1)
 		return ;
 	byte = 0;
-	(list->ent.first_type == T_REG) ? (byte |= REG_MASK_1) : (0);
-	(list->ent.first_type == T_IND) ? (byte |= IND_MASK_1) : (0);
-	(list->ent.first_type == T_DIR) ? (byte |= DIR_MASK_1) : (0);
-	(list->ent.second_type == T_REG) ? (byte |= REG_MASK_2) : (0);
-	(list->ent.second_type == T_IND) ? (byte |= IND_MASK_2) : (0);
-	(list->ent.second_type == T_DIR) ? (byte |= DIR_MASK_2) : (0);
-	(list->ent.third_type == T_REG) ? (byte |= REG_MASK_3) : (0);
-	(list->ent.third_type == T_IND) ? (byte |= IND_MASK_3) : (0);
-	(list->ent.third_type == T_DIR) ? (byte |= DIR_MASK_3) : (0);
+	(list->ent.f_type == T_REG) ? (byte |= REG_MASK_1) : (0);
+	(list->ent.f_type == T_IND) ? (byte |= IND_MASK_1) : (0);
+	(list->ent.f_type == T_DIR) ? (byte |= DIR_MASK_1) : (0);
+	(list->ent.s_type == T_REG) ? (byte |= REG_MASK_2) : (0);
+	(list->ent.s_type == T_IND) ? (byte |= IND_MASK_2) : (0);
+	(list->ent.s_type == T_DIR) ? (byte |= DIR_MASK_2) : (0);
+	(list->ent.t_type == T_REG) ? (byte |= REG_MASK_3) : (0);
+	(list->ent.t_type == T_IND) ? (byte |= IND_MASK_3) : (0);
+	(list->ent.t_type == T_DIR) ? (byte |= DIR_MASK_3) : (0);
 	bytes[(*index)++] = byte;
 }
 

@@ -74,9 +74,9 @@ int 	ft_check_arg(line_list *list, int n)
 	int type;
 
 	type = -1;
-	n == 1 ? type = list->ent.first_type : (0);
-	n == 2 ? type = list->ent.second_type : (0);
-	n == 3 ? type = list->ent.third_type : (0);
+	n == 1 ? type = list->ent.f_type : (0);
+	n == 2 ? type = list->ent.s_type : (0);
+	n == 3 ? type = list->ent.t_type : (0);
 	i = ft_find_inst(list->ent.com[0]);
 	if (type != T_DIR && type != T_REG && type != T_IND && type != INST)
 		return(ft_print_err_lexical(list, n));
@@ -178,11 +178,11 @@ int 	ft_cycle_body(line_list *list)
 	int res;
 
 	res = 0;
-	if (list->ent.first_type != 0)
+	if (list->ent.f_type != 0)
 		res = ft_check_arg(list, 1);
-	if (list->ent.second_type != 0)
+	if (list->ent.s_type != 0)
 		res += ft_check_arg(list, 2);
-	if (list->ent.third_type != 0)
+	if (list->ent.t_type != 0)
 		res += ft_check_arg(list, 3);
 	if (res < 0)
 		return (-1);
