@@ -15,7 +15,7 @@
 void		ft_print_n_err(void)
 {
 	ft_printf("Syntax error - unexpected end of input ");
-	ft_printf("(Perhaps you forgot to end with a newline ?)");
+	ft_printf("(Perhaps you forgot to end with a newline ?)\n");
 }
 
 int			ft_is_label(char *str)
@@ -85,7 +85,7 @@ int			ft_check_label_char(t_line_list *list, int n)
 			pos = ft_get_pos(list->ent.r_line, list->ent.com[n]);
 			ft_printf("Lexical error at [");
 			ft_printf("%d:", list->ent.nbr);
-			ft_printf("%d]", pos + i + 1);
+			ft_printf("%d]\n", pos + i + 1);
 			return (-1);
 		}
 	}

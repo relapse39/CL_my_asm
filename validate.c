@@ -35,14 +35,14 @@ int		ft_check_args_n(t_line_list *list)
 		ft_printf("Invalid instruction at token [TOKEN]");
 		ft_printf("[%03d", list->ent.nbr);
 		ft_printf(":%03d]", ft_get_pos(list->ent.r_line, list->ent.com[0]) + 1);
-		ft_printf(" %s \"%s\"",
+		ft_printf(" %s \"%s\"\n",
 			ft_get_l_i_str(list->ent.com[0]), list->ent.com[0]);
 		return (-1);
 	}
 	if (g_op_tab[par].arg_num != list->ent.args_n)
 	{
 		ft_printf("Invalid parameter %d type ", g_op_tab[par].arg_num - 1);
-		ft_printf("register for instruction %s ", g_op_tab[par].name);
+		ft_printf("register for instruction %s\n", g_op_tab[par].name);
 		return (-1);
 	}
 	return (0);
@@ -65,7 +65,7 @@ int		ft_check_arg(t_line_list *list, int n)
 	if ((g_op_tab[i].args[n - 1] & type) == 0)
 	{
 		ft_printf("Invalid parameter %d type register", n - 1);
-		ft_printf(" for instruction %s", g_op_tab[i].name);
+		ft_printf(" for instruction %s\n", g_op_tab[i].name);
 		return (-1);
 	}
 	if (type == T_REG)

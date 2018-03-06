@@ -50,7 +50,7 @@ char			*ft_get_bytes2(t_line_list *list, t_line_list *tmp)
 	return (ret);
 }
 
-char			*ft_get_byte(t_line_list *list, t_line_list *tmp, int i, char *err)
+char			*ft_byte(t_line_list *list, t_line_list *tmp, int i, char *err)
 {
 	char		*cmd;
 	int			flag;
@@ -75,7 +75,7 @@ char			*ft_get_byte(t_line_list *list, t_line_list *tmp, int i, char *err)
 	ft_printf(" while attempting to dereference token [TOKEN]");
 	ft_printf("[%03d:%d]", tmp->ent.nbr, ft_get_pos(tmp->ent.r_line, err) + 1);
 	err[0] == '%' ? ft_printf(" ") : ft_printf(" IN");
-	ft_printf("DIRECT_LABEL %s", err);
+	ft_printf("DIRECT_LABEL %s\n", err);
 	return (NULL);
 }
 
@@ -97,7 +97,7 @@ int				ft_redirect_lables(t_line_list *list)
 			{
 				error_c = ft_strdup(tmp->ent.com[i]);
 				free(tmp->ent.com[i]);
-				tmp->ent.com[i] = ft_get_byte(list, tmp, i, error_c);
+				tmp->ent.com[i] = ft_byte(list, tmp, i, error_c);
 				free(error_c);
 				if (tmp->ent.com[i] == NULL)
 					return (-1);

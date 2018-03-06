@@ -52,7 +52,7 @@ int		w_in_file(t_line_list *file, t_main *main, char *filename)
 	write(fd, main->header, sizeof(*main->header));
 	write(fd, main->bytes, (size_t)size_file);
 	close(fd);
-	ft_printf("Writing output program to %s", new_filename);
+	ft_printf("Writing output program to %s\n", new_filename);
 	free(new_filename);
 	return (0);
 }

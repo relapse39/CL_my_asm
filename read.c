@@ -16,15 +16,15 @@ int					check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
 {
 	pos += skip_wspcs(s);
 	if (!ft_strcmp(cmd, s + pos))
-		exit(ft_printf("Syntax error on raw %d, symbol %d",
+		exit(ft_printf("Syntax error on raw %d, symbol %d\n",
 							(*nbr), ft_strlen(cmd) + pos));
 	pos += ft_strlen(cmd);
 	pos += skip_wspcs(s + pos);
 	if (s[pos] != 34 && s[pos] != '\0')
-		exit(ft_printf("Syntax error on raw %d, symbol %d",
+		exit(ft_printf("Syntax error on raw %d, symbol %d\n",
 					(*nbr), pos));
 	else if (s[pos] == '\0')
-		exit(ft_printf("Break line %d, symbol %d",
+		exit(ft_printf("Break line %d, symbol %d\n",
 				(*nbr) + 1, 0));
 	return (pos + 1);
 }
@@ -40,7 +40,7 @@ static char			*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 	else
 	{
 		if ((r = check_eos(ptr + 1)) != 0)
-			exit(ft_printf("Syntax error on raw %d, symbol %d",
+			exit(ft_printf("Syntax error on raw %d, symbol %d\n",
 					(*nbr), i + r));
 		(*res) = ft_strsub(s + i, 0, ptr - (s + i));
 		ft_strdel(&s);
@@ -62,14 +62,14 @@ char				*set_name(char *s, int fd, int *nbr, char *cmd)
 	{
 		ft_strdel(&s);
 		if ((r = get_next_line(fd, &s)) < 0)
-			M_ERROR(-1, "Reading error");
+			M_ERROR(-1, "Reading error\n");
 		else if (r == 0)
-			exit(ft_printf("There is no %s at all", cmd + 1));
+			exit(ft_printf("There is no %s at all\n", cmd + 1));
 		(*nbr)++;
 		ptr = some_modifying(&res, s);
 	}
 	if ((r = check_eos(ptr + 1)) != 0)
-		exit(ft_printf("Syntax error on raw %d, symbol %d",
+		exit(ft_printf("Syntax error on raw %d, symbol %d\n",
 					(*nbr), r));
 	some_modifying_two(s, ptr, &res);
 	return (res);

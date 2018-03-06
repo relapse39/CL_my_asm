@@ -65,7 +65,7 @@ unsigned char	ft_get_op(char *inst, char *line)
 		;
 	if (g_op_tab[i].opcode == 0)
 	{
-		ft_printf("bad instr in line %s", line);
+		ft_printf("bad instr in line %s\n", line);
 		return (0);
 	}
 	else
