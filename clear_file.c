@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int			ft_is_delete(char **com)
+int					ft_is_delete(char **com)
 {
 	if (com[0] == NULL)
 		return (1);
@@ -24,16 +24,16 @@ int			ft_is_delete(char **com)
 		return (0);
 }
 
-line_list	*ft_remove(line_list *list)
+line_list			*ft_remove(line_list *list)
 {
-	int	i;
+	int				i;
+	line_list		*tmp;
 
 	i = -1;
 	if (list == NULL)
 		return (NULL);
 	if (ft_is_delete(list->ent.com))
 	{
-		line_list *tmp;
 		tmp = list->next;
 		free(list->ent.r_line);
 		while (list->ent.com[++i])
@@ -47,7 +47,7 @@ line_list	*ft_remove(line_list *list)
 	return (list);
 }
 
-int			ft_got_thresh(line_list *list)
+int					ft_got_thresh(line_list *list)
 {
 	while (list)
 	{
@@ -58,43 +58,60 @@ int			ft_got_thresh(line_list *list)
 	return (-1);
 }
 
-void		ft_clear(line_list *list)
+int					ft_get_l(line_list *list)
 {
-	int		i;
-	int		j;
-	int		k;
-	char 	*new_s = NULL;
+	int				i;
+	int				j;
+
+	i = 0;
+	j = 0;
+	while (list->ent.com[i] != NULL)
+	{
+		while (list->ent.com[i][j] != 0)
+			j++;
+		i++;
+	}
+	return (i + j);
+}
+
+char				*ft_copy(line_list *list)
+{
+	int				i;
+	int				k;
+	int				j;
+	char			*new_s;
+
+	i = 1;
+	k = 0;
+	new_s = malloc(sizeof(ft_get_l(list)));
+	while (list->ent.com[i] != NULL)
+	{
+		j = 0;
+		while (list->ent.com[i][j] != 0)
+		{
+			new_s[k] = list->ent.com[i][j];
+			j++;
+			k++;
+		}
+		new_s[k] = ' ';
+		k++;
+		i++;
+	}
+	new_s[k] = '\0';
+	return (new_s);
+}
+
+void				ft_clear(line_list *list)
+{
+	int				i;
+	char			*new_s;
 
 	while (list)
 	{
-		i = 0;
-		j = 0;
 		if (ft_is_label(list->ent.com[0]) &&
 				list->ent.com[1] != NULL)
 		{
-			while (list->ent.com[i] != NULL)
-			{
-				while (list->ent.com[i][j] != 0)
-					j++;
-				i++;
-			}
-			new_s = malloc(sizeof(j + i));
-			i = 1;
-			k = 0;
-			while (list->ent.com[i] != NULL)
-			{
-				j = 0;
-				while (list->ent.com[i][j] != 0)
-				{
-					new_s[k] = list->ent.com[i][j];
-					j++;
-					k++;
-				}
-				new_s[k] = ' ';
-				k++;
-				i++;
-			}
-			new_s[k] = '\0';
+			new_s = ft_copy(list);
 			i = 0;
 			while (list->ent.com[i])
 			{
@@ -110,7 +127,7 @@ void		ft_clear(line_list *list)
 	}
 }
 
-void		ft_clear_list(line_list **list)
+void				ft_clear_list(line_list **list)
 {
 	ft_clear(*list);
 	while (ft_got_thresh(*list) == 1)
