@@ -32,15 +32,15 @@ line_list   	*ft_remove(line_list *list)
 	i = -1;
 	if (list == NULL)
 		return (NULL);
-	if (ft_is_delete(list->entry.com))
+	if (ft_is_delete(list->ent.com))
 	{
 		line_list *tmp;
 		tmp = list->next;
-		free(list->entry.raw_line);
-		while(list->entry.com[++i])
-			free(list->entry.com[i]);
-		free(list->entry.com[i]);
-		free(list->entry.com);
+		free(list->ent.raw_line);
+		while(list->ent.com[++i])
+			free(list->ent.com[i]);
+		free(list->ent.com[i]);
+		free(list->ent.com);
 		free(list);
 		return (tmp);
 	}
@@ -53,7 +53,7 @@ int 		ft_got_thresh(line_list *list)
 {
 	while(list)
 	{
-		if (ft_is_delete((list->entry.com)))
+		if (ft_is_delete((list->ent.com)))
 			return (1);
 		list = list->next;
 	}
@@ -72,24 +72,24 @@ void		ft_clear(line_list *list)
 	{
 		i = 0;
 		j = 0;
-		if (ft_is_label(list->entry.com[0]) &&
-				list->entry.com[1] != NULL)
+		if (ft_is_label(list->ent.com[0]) &&
+				list->ent.com[1] != NULL)
 		{
-			while(list->entry.com[i] != NULL)
+			while(list->ent.com[i] != NULL)
 			{
-				while(list->entry.com[i][j] != 0)
+				while(list->ent.com[i][j] != 0)
 					j++;
 				i++;
 			}
 			new_s = malloc(sizeof(j + i));
 			i = 1;
 			k = 0;
-			while(list->entry.com[i] != NULL)
+			while(list->ent.com[i] != NULL)
 			{
 				j = 0;
-				while(list->entry.com[i][j] != 0)
+				while(list->ent.com[i][j] != 0)
 				{
-					new_s[k] = list->entry.com[i][j];
+					new_s[k] = list->ent.com[i][j];
 					j++;
 					k++;
 				}
@@ -99,14 +99,14 @@ void		ft_clear(line_list *list)
 			}
 			new_s[k] = '\0';
 			i = 0;
-			while(list->entry.com[i])
+			while(list->ent.com[i])
 			{
-				free(list->entry.com[i]);
+				free(list->ent.com[i]);
 				i++;
 			}
-			free(list->entry.com[i]);
-			free(list->entry.com);
-			list->entry.com = ft_strsplit(new_s, ' ');
+			free(list->ent.com[i]);
+			free(list->ent.com);
+			list->ent.com = ft_strsplit(new_s, ' ');
 			free(new_s);
 
 
@@ -124,16 +124,16 @@ void		ft_clear_list(line_list **list)
 //	while (tmp)
 //	{
 //		i = -1;
-//		if (ft_is_label(tmp->entry.com[0]) &&
-//			tmp->entry.com[1] != NULL)
+//		if (ft_is_label(tmp->ent.com[0]) &&
+//			tmp->ent.com[1] != NULL)
 //		{
-//			while(tmp->entry.com[++i] && tmp->entry.com[i + 1])
+//			while(tmp->ent.com[++i] && tmp->ent.com[i + 1])
 //			{
-//				ft_strdel(&tmp->entry.com[i]);
-//				tmp->entry.com[i] = ft_strdup(tmp->entry.com[i + 1]);
+//				ft_strdel(&tmp->ent.com[i]);
+//				tmp->ent.com[i] = ft_strdup(tmp->ent.com[i + 1]);
 //
 //			}
-//			ft_strdel(&tmp->entry.com[i]);
+//			ft_strdel(&tmp->ent.com[i]);
 //		}
 //		tmp = tmp->next;
 //	}

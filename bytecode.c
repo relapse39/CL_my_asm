@@ -41,18 +41,18 @@ static void		ft_arg_code(unsigned char *bytes, line_list *list, int *index)
 {
 	int			byte;
 
-	if (ft_is_need_arg_code(list->entry.com[0]) == 1)
+	if (ft_is_need_arg_code(list->ent.com[0]) == 1)
 		return;
 	byte = 0;
-	(list->entry.first_type == T_REG) ? (byte |= REG_MASK_1) : (0);
-	(list->entry.first_type == T_IND) ? (byte |= IND_MASK_1) : (0);
-	(list->entry.first_type == T_DIR) ? (byte |= DIR_MASK_1) : (0);
-	(list->entry.second_type == T_REG) ? (byte |= REG_MASK_2) : (0);
-	(list->entry.second_type == T_IND) ? (byte |= IND_MASK_2) : (0);
-	(list->entry.second_type == T_DIR) ? (byte |= DIR_MASK_2) : (0);
-	(list->entry.third_type == T_REG) ? (byte |= REG_MASK_3) : (0);
-	(list->entry.third_type == T_IND) ? (byte |= IND_MASK_3) : (0);
-	(list->entry.third_type == T_DIR) ? (byte |= DIR_MASK_3) : (0);
+	(list->ent.f_type == T_REG) ? (byte |= REG_MASK_1) : (0);
+	(list->ent.f_type == T_IND) ? (byte |= IND_MASK_1) : (0);
+	(list->ent.f_type == T_DIR) ? (byte |= DIR_MASK_1) : (0);
+	(list->ent.s_type == T_REG) ? (byte |= REG_MASK_2) : (0);
+	(list->ent.s_type == T_IND) ? (byte |= IND_MASK_2) : (0);
+	(list->ent.s_type == T_DIR) ? (byte |= DIR_MASK_2) : (0);
+	(list->ent.t_type == T_REG) ? (byte |= REG_MASK_3) : (0);
+	(list->ent.t_type == T_IND) ? (byte |= IND_MASK_3) : (0);
+	(list->ent.t_type == T_DIR) ? (byte |= DIR_MASK_3) : (0);
 	bytes[(*index)++] = byte;
 }
 
@@ -124,8 +124,8 @@ void			ft_prin_t(line_list * list)
 	while(list)
 	{
 		i = -1;
-		while(list->entry.com[++i])
-			ft_printf("%s ",list->entry.com[i]);
+		while(list->ent.com[++i])
+			ft_printf("%s ",list->ent.com[i]);
 		ft_printf("\n");
 		list = list->next;
 	}
@@ -169,13 +169,13 @@ int		ft_bytecode(line_list *list, t_main *main)
 	ft_prin_t(list);
 	while (list)
 	{
-		if (ft_get_op(list->entry.com[0], list->entry.raw_line) == 0)
+		if (ft_get_op(list->ent.com[0], list->ent.raw_line) == 0)
 			return (-1);
 		else
-			main->bytes[i] = ft_get_op(list->entry.com[0], list->entry.raw_line);
+			main->bytes[i] = ft_get_op(list->ent.com[0], list->ent.raw_line);
 		i += 1;
 			ft_arg_code(main->bytes, list, &i);
-		ft_param_code(main, list->entry.com, &i);
+		ft_param_code(main, list->ent.com, &i);
 		list = list->next;
 	}
 	return (0);

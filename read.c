@@ -20,17 +20,17 @@ static line_list	*create_file(char *line, int nbr)
 
 	if ((new = (line_list*)malloc(sizeof(line_list))))
 	{
-		new->entry.raw_line = line;
-		if ((new->entry.com = ft_split_cmd(line)) == NULL)
+		new->ent.raw_line = line;
+		if ((new->ent.com = ft_split_cmd(line)) == NULL)
 			return (NULL);
-		new->entry.args_n = 0;
-		new->entry.first_type = 0;
-		new->entry.second_type = 0;
-		new->entry.third_type = 0;
-		new->entry.pos = 0;
-		new->entry.length = 0;
+		new->ent.args_n = 0;
+		new->ent.f_type = 0;
+		new->ent.s_type = 0;
+		new->ent.t_type = 0;
+		new->ent.pos = 0;
+		new->ent.length = 0;
 		new->next = NULL;
-		new->entry.nbr = nbr;
+		new->ent.nbr = nbr;
 	}
 	else
 	{
@@ -90,29 +90,65 @@ int	check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
 
 
 
-char 	*set_name(char *s, int fd, int *nbr, char *cmd)
+
+static char	*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 {
-	int i;
-	int r;
-	char *ptr;
-	char *res;
-	char *tmp;
+	char	*ptr;
+	int		r;
 
-
-
-	i = check_cmd_lable(s, cmd, 0, nbr);
 	ptr = ft_strchr(s + i, 34);
 	if (ptr == NULL)
-		res = ft_strjoin(s + i, "\n");
+		(*res) = ft_strjoin(s + i, "\n");
 	else
 	{
 		if ((r = check_eos(ptr + 1)) != 0)
 			exit(ft_printf("Syntax error on raw %d, symbol %d",
 						   (*nbr), i + r));
-		res = ft_strsub(s + i, 0, ptr - (s + i));
+		(*res) = ft_strsub(s + i, 0, ptr - (s + i));
 		ft_strdel(&s);
-		return (res);
+		return (ptr);
 	}
+	return (ptr);
+}
+
+static char	*some_modifying(char **res, char *s)
+{
+	char	*tmp;
+	char	*ptr;
+
+	ptr = ft_strchr(s, 34);
+	if (ptr == NULL)
+	{
+		tmp = *res;
+		*res = ft_strjoin(*res, s);
+		ft_strdel(&tmp);
+		tmp = *res;
+		*res = ft_strjoin(*res, "\n");
+		ft_strdel(&tmp);
+	}
+	return (ptr);
+}
+
+static void	some_modifying_two(char *s, char *ptr, char **res)
+{
+	char	*tmp;
+
+	tmp = *res;
+	ft_strclr(ptr);
+	*res = ft_strjoin(*res, s);
+	ft_strdel(&tmp);
+	ft_strdel(&s);
+}
+
+char 	*set_name(char *s, int fd, int *nbr, char *cmd)
+{
+	int r;
+	char *ptr;
+	char *res;
+
+	if ((ptr = get_the_fucking_ptr(s,
+		check_cmd_lable(s, cmd, 0, nbr), nbr, &res)))
+		return(res);
 	while (ptr == NULL)
 	{
 		ft_strdel(&s);
@@ -121,32 +157,14 @@ char 	*set_name(char *s, int fd, int *nbr, char *cmd)
 		else if (r == 0)
 			exit(ft_printf("There is no %s at all", cmd + 1));
 		(*nbr)++;
-		ptr = ft_strchr(s, 34);
-		if (ptr == NULL)
-		{
-			tmp = res;
-			res = ft_strjoin(res, s);
-			ft_strdel(&tmp);
-			tmp = res;
-			res = ft_strjoin(res, "\n");
-			ft_strdel(&tmp);
-		}
+		ptr = some_modifying(&res, s);
 	}
-		if ((r = check_eos(ptr + 1)) != 0)
-			exit(ft_printf("Syntax error on raw %d, symbol %d",
-						   (*nbr), r));
-		ft_strclr(ptr);
-		tmp = res;
-		res = ft_strjoin(res, s);
-		ft_strdel(&tmp);
-		ft_strdel(&s);
+	if ((r = check_eos(ptr + 1)) != 0)
+		exit(ft_printf("Syntax error on raw %d, symbol %d",
+					   (*nbr), r));
+	some_modifying_two(s, ptr, &res);
 	return (res);
 }
-
-
-
-
-
 
 void 	ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
 {
@@ -170,17 +188,12 @@ int ft_read_file(char *name, line_list **list, t_main *main)
 	char		*str;
 	line_list	*tmp;
 	int 		nbr;
-//	int 		flag;
-
-
 
 	*list = NULL;
 	nbr = 0;
 
 	if ((fd = open(name, O_RDONLY)) == -1)
 		return (ft_err("open", 0));
-	//get_name(fd, &nbr)
-
 	while ((get_next_line(fd, &str)))
 	{
 		nbr++;

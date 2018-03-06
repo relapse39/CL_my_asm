@@ -38,9 +38,9 @@ typedef struct line_list_t line_list;
 struct 			line_t {
     char 		*raw_line;
     char 		**com;
-    int 		first_type;
-    int 		second_type;
-    int 		third_type;
+    int 		f_type;
+    int 		s_type;
+    int 		t_type;
     int		    args_n;
     int 		pos;
     int 		length;
@@ -48,7 +48,7 @@ struct 			line_t {
 };
 
 struct line_list_t {
-    line entry;
+    line ent;
     line_list *next;
 };
 
