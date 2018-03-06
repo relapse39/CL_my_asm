@@ -32,6 +32,6 @@ file(GLOB LIBFT
         champs/*.s
         )
 
-set(SOURCE_FILES main.c asm.h split.c helper.c errors.c read.c get_pos.c get_type.c remove_lable.c  clear_file.c validate.c bytecode.c header.c to_file.c bytecode_help.c helper2.c helper3.c)
+set(SOURCE_FILES main.c asm.h split.c helper.c errors.c read.c get_pos.c get_type.c remove_lable.c  clear_file.c validate.c bytecode.c header.c to_file.c helper2.c helper3.c bytecode_help.c)
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 add_executable(CL_my_asm ${SOURCE_FILES} ${LIBFT})
