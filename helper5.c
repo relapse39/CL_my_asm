@@ -27,9 +27,9 @@ int				skip_wspcs(char *s)
 	return (i);
 }
 
-int				read_helper(line_list **list, char *str, int *nbr)
+int				read_helper(t_line_list **list, char *str, int *nbr)
 {
-	line_list	*tmp;
+	t_line_list	*tmp;
 
 	tmp = *list;
 	if (tmp)

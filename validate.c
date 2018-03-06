@@ -25,7 +25,7 @@ int		ft_find_inst(char *inst)
 		return (i);
 }
 
-int		ft_check_args_n(line_list *list)
+int		ft_check_args_n(t_line_list *list)
 {
 	int	par;
 
@@ -48,7 +48,7 @@ int		ft_check_args_n(line_list *list)
 	return (0);
 }
 
-int		ft_check_arg(line_list *list, int n)
+int		ft_check_arg(t_line_list *list, int n)
 {
 	int	i;
 	int	type;
@@ -76,7 +76,7 @@ int		ft_check_arg(line_list *list, int n)
 	return (0);
 }
 
-int		ft_cycle_body(line_list *list)
+int		ft_cycle_body(t_line_list *list)
 {
 	int	res;
 
@@ -92,9 +92,9 @@ int		ft_cycle_body(line_list *list)
 	return (0);
 }
 
-int		ft_is_valid(line_list *list)
+int		ft_is_valid(t_line_list *list)
 {
-	line_list	*tmp;
+	t_line_list	*tmp;
 
 	tmp = list;
 	while (tmp)

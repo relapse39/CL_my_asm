@@ -37,7 +37,7 @@ char	*get_name(char *name)
 	return (new_name);
 }
 
-int		write_in_file(line_list *file, t_main *main, char *filename)
+int		w_in_file(t_line_list *file, t_main *main, char *filename)
 {
 	char	*new_filename;
 	int		size_file;

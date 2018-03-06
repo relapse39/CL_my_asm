@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int					ft_print_err_inst(line_list *list, int n)
+int					ft_print_err_inst(t_line_list *list, int n)
 {
 	ft_printf("Syntax error in token [TOKEN]");
 	ft_printf("[%03d:", list->ent.nbr);
@@ -21,7 +21,7 @@ int					ft_print_err_inst(line_list *list, int n)
 	return (-1);
 }
 
-int					ft_print_err_lexical(line_list *list, int n)
+int					ft_print_err_lexical(t_line_list *list, int n)
 {
 	ft_printf("Lexical error at ");
 	ft_printf("[%d:", list->ent.nbr);
@@ -29,7 +29,7 @@ int					ft_print_err_lexical(line_list *list, int n)
 	return (-1);
 }
 
-int					ft_print_err_arg(line_list *list, int n)
+int					ft_print_err_arg(t_line_list *list, int n)
 {
 	ft_printf("Syntax error in token [TOKEN]");
 	ft_printf("[%03d:", list->ent.nbr);
@@ -38,11 +38,11 @@ int					ft_print_err_arg(line_list *list, int n)
 	return (-1);
 }
 
-line_list			*create_file(char *line, int nbr)
+t_line_list			*create_file(char *line, int nbr)
 {
-	line_list		*new;
+	t_line_list		*new;
 
-	if ((new = (line_list*)malloc(sizeof(line_list))))
+	if ((new = (t_line_list*)malloc(sizeof(t_line_list))))
 	{
 		new->ent.r_line = line;
 		if ((new->ent.com = ft_split_cmd(line)) == NULL)

@@ -89,7 +89,7 @@ void				ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
 		M_ERROR(-1, "Not a valid sequence");
 }
 
-int					ft_read_file(char *name, line_list **list, t_main *main)
+int					ft_read_file(char *name, t_line_list **list, t_main *main)
 {
 	int			fd;
 	char		*str;

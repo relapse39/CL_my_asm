@@ -23,7 +23,7 @@ int			ft_inst_check(char *str)
 	return (0);
 }
 
-line_list	*get_last(line_list *list)
+t_line_list	*get_last(t_line_list *list)
 {
 	while (list->next)
 		list = list->next;

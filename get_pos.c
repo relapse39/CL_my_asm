@@ -57,7 +57,7 @@ static int		ft_get_special_inst(char **tab, int i, int size)
 	return (size);
 }
 
-static int		ft_get_inst_pos(line_list *list, int i, int pos)
+static int		ft_get_inst_pos(t_line_list *list, int i, int pos)
 {
 	list->ent.pos = pos;
 	if (ft_is_simple_type(list->ent.com[i]) != 0)
@@ -72,9 +72,9 @@ static int		ft_get_inst_pos(line_list *list, int i, int pos)
 	return (pos);
 }
 
-void			ft_get_position(line_list *list)
+void			ft_get_position(t_line_list *list)
 {
-	line_list	*tmp;
+	t_line_list	*tmp;
 	int			pos;
 	int			i;
 

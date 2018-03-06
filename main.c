@@ -41,9 +41,9 @@ int				ft_check_end(char *name)
 	return (0);
 }
 
-int				ft_free_list(line_list *list, t_main *main, int ret)
+int				ft_free_list(t_line_list *list, t_main *main, int ret)
 {
-	line_list	*tmp;
+	t_line_list	*tmp;
 	int			i;
 
 	while (list)
@@ -84,7 +84,7 @@ t_main			*ft_init_main(void)
 
 int				ft_assemble(char *name)
 {
-	line_list	*list;
+	t_line_list	*list;
 	t_main		*main;
 
 	if ((main = ft_init_main()) == NULL)
@@ -105,7 +105,7 @@ int				ft_assemble(char *name)
 		return (ft_free_list(list, main, -1));
 	if (get_header(main, ft_get_max(list)) == -1)
 		return (ft_free_list(list, main, -1));
-	if (write_in_file(list, main, name) == -1)
+	if (w_in_file(list, main, name) == -1)
 		return (ft_free_list(list, main, -1));
 	ft_free_list(list, main, 0);
 	return (0);

@@ -70,7 +70,7 @@ int			ft_atoi_1(const char *str)
 		return (int)(nbr);
 }
 
-int			ft_check_label_char(line_list *list, int n)
+int			ft_check_label_char(t_line_list *list, int n)
 {
 	int i;
 	int pos;

@@ -43,7 +43,7 @@ int					ft_spec_case(char *inst, int n)
 		return (0);
 }
 
-int					ft_get_max(line_list *list)
+int					ft_get_max(t_line_list *list)
 {
 	if (list == NULL)
 		return (0);

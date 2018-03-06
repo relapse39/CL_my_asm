@@ -12,10 +12,10 @@
 
 #include "asm.h"
 
-line_list			*ft_remove(line_list *list)
+t_line_list			*ft_remove(t_line_list *list)
 {
 	int				i;
-	line_list		*tmp;
+	t_line_list		*tmp;
 
 	i = -1;
 	if (list == NULL)
@@ -35,7 +35,7 @@ line_list			*ft_remove(line_list *list)
 	return (list);
 }
 
-int					ft_get_l(line_list *list)
+int					ft_get_l(t_line_list *list)
 {
 	int				i;
 	int				j;
@@ -51,7 +51,7 @@ int					ft_get_l(line_list *list)
 	return (i + j);
 }
 
-char				*ft_copy(line_list *list)
+char				*ft_copy(t_line_list *list)
 {
 	int				i;
 	int				k;
@@ -78,7 +78,7 @@ char				*ft_copy(line_list *list)
 	return (new_s);
 }
 
-void				ft_clear(line_list *list)
+void				ft_clear(t_line_list *list)
 {
 	int				i;
 	char			*new_s;
@@ -104,7 +104,7 @@ void				ft_clear(line_list *list)
 	}
 }
 
-void				ft_clear_list(line_list **list)
+void				ft_clear_list(t_line_list **list)
 {
 	ft_clear(*list);
 	while (ft_got_thresh(*list) == 1)

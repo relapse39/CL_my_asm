@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int				ft_check_lables(line_list *list)
+int				ft_check_lables(t_line_list *list)
 {
 	int			i;
 
@@ -47,7 +47,7 @@ int				ft_is_delete(char **com)
 		return (0);
 }
 
-int				ft_got_thresh(line_list *list)
+int				ft_got_thresh(t_line_list *list)
 {
 	while (list)
 	{
@@ -58,7 +58,7 @@ int				ft_got_thresh(line_list *list)
 	return (-1);
 }
 
-void			ft_ad_t(line_list *line, int com_n, int type)
+void			ft_ad_t(t_line_list *line, int com_n, int type)
 {
 	if (com_n == 0)
 		line->ent.f_type = type;

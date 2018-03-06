@@ -37,7 +37,7 @@ void			ft_write(unsigned char *bytes, int code, int *i, int count)
 	}
 }
 
-void			ft_arg_code(unsigned char *bytes, line_list *list, int *index)
+void			ft_arg_code(unsigned char *bytes, t_line_list *list, int *index)
 {
 	int			byte;
 
@@ -95,7 +95,7 @@ int				ft_param_code(t_main *main, char **tab, int *index)
 	return (0);
 }
 
-int				ft_bytecode(line_list *list, t_main *main)
+int				ft_bytecode(t_line_list *list, t_main *main)
 {
 	int			i;
 	int			size;

@@ -65,7 +65,7 @@ int		ft_is_int(char *str)
 	return (1);
 }
 
-void	ft_get_type_param_2(line_list *line, int com_n, int i)
+void	ft_get_type_param_2(t_line_list *line, int com_n, int i)
 {
 	if (ft_is_reg(line->ent.com[i]) == 1)
 		ft_ad_t(line, com_n, T_REG);
@@ -79,7 +79,7 @@ void	ft_get_type_param_2(line_list *line, int com_n, int i)
 		ft_ad_t(line, com_n, 10);
 }
 
-int		ft_get_type_param(line_list *line)
+int		ft_get_type_param(t_line_list *line)
 {
 	int		i;
 	int		com_n;

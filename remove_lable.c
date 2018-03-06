@@ -12,9 +12,9 @@
 
 #include "asm.h"
 
-int				ft_is_duplicate(line_list *list)
+int				ft_is_duplicate(t_line_list *list)
 {
-	line_list	*tmp;
+	t_line_list	*tmp;
 
 	while (list)
 	{
@@ -35,7 +35,7 @@ int				ft_is_duplicate(line_list *list)
 	return (0);
 }
 
-char			*ft_get_bytes2(line_list *list, line_list *tmp)
+char			*ft_get_bytes2(t_line_list *list, t_line_list *tmp)
 {
 	char		*ret;
 	char		*tmp_s;
@@ -50,7 +50,7 @@ char			*ft_get_bytes2(line_list *list, line_list *tmp)
 	return (ret);
 }
 
-char			*ft_get_byte(line_list *list, line_list *tmp, int i, char *err)
+char			*ft_get_byte(t_line_list *list, t_line_list *tmp, int i, char *err)
 {
 	char		*cmd;
 	int			flag;
@@ -79,9 +79,9 @@ char			*ft_get_byte(line_list *list, line_list *tmp, int i, char *err)
 	return (NULL);
 }
 
-int				ft_redirect_lables(line_list *list)
+int				ft_redirect_lables(t_line_list *list)
 {
-	line_list	*tmp;
+	t_line_list	*tmp;
 	int			i;
 	char		*error_c;
 
@@ -108,7 +108,7 @@ int				ft_redirect_lables(line_list *list)
 	return (0);
 }
 
-int				ft_remove_labels(line_list *list)
+int				ft_remove_labels(t_line_list *list)
 {
 	if (ft_check_lables(list) == -1)
 		return (-1);
