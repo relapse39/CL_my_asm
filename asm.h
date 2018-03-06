@@ -61,9 +61,8 @@ typedef struct	s_main
     int 			name_c;
 }				t_main;
 
-
-void			ft_prin_t(line_list * list);
-// govno
+int					ft_atoi_1(const char *str);
+int 				ft_atoi_ret( int neg);
 void                ft_print_n_err(void);
 int 	            ft_find_inst(char *inst);
 char 				*ft_get_l_i_str(char *str);
@@ -81,8 +80,6 @@ int					ft_get_type_param(line_list *line);
 void				ft_get_position(line_list *list);
 int					ft_inst_check(char *str);
 int 				ft_read_file(char *name, line_list **list,t_main *main);
-int 				ft_read_name(line_list *list, t_main *main);
-int 				ft_read_comment(line_list *list, t_main *main);
 char				**ft_split_cmd(char *str);
 line_list  			*get_last(line_list *list);
 int 				ft_is_empty(char *str);

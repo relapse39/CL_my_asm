@@ -15,20 +15,7 @@
 
 
 
-int ft_is_label(char *str)
-{
 
-	int i;
-	if (str == NULL)
-		return (0);
-	i = -1;
-	while (str[++i])
-		;
-	if (str[i - 1] == ':')
-		return (1);
-	else
-		return (0);
-}
 
 int		ft_inst_check(char *str)
 {

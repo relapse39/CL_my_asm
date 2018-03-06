@@ -77,59 +77,10 @@ static unsigned char	ft_get_op(char *inst, char *line)
 
 
 
-int 	ft_atoi_ret( int neg)
-{
-
-		if (neg)
-			return (0);
-		else
-			return (2147483647);
-}
 
 
-int		ft_atoi_1(const char *str)
-{
-	int i;
-	uintmax_t   nbr;
-	int negative;
-
-	nbr = 0;
-	negative = 0;
-	i = 0;
-	while ((str[i] == '\t') || (str[i] == ' '))
-		i++;
-	if (str[i] == '-')
-		negative = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] && (str[i] >= '0') && (str[i] <= '9'))
-	{
-		nbr *= 10;
-		nbr += (int)str[i] - '0';
-		if (nbr > MY_LONG_MAX)
-			return (ft_atoi_ret(negative));
-		i++;
-	}
-	if (negative == 1)
-		return (int)(-nbr);
-	else
-		return (int)(nbr);
-}
 
 
-void			ft_prin_t(line_list * list)
-{
-	int i;
-
-	while(list)
-	{
-		i = -1;
-		while(list->entry.com[++i])
-			ft_printf("%s ",list->entry.com[i]);
-		ft_printf("\n");
-		list = list->next;
-	}
-}
 
 static int		ft_param_code(t_main *main, char **tab, int *index)
 {
