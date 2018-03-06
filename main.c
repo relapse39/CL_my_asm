@@ -50,11 +50,11 @@ int				ft_free_list(line_list *list, t_main *main, int ret)
 	{
 		i = 0;
 		tmp = list->next;
-		free(list->entry.raw_line);
-		while (list->entry.com[i])
-			free(list->entry.com[i++]);
-		free(list->entry.com[i]);
-		free(list->entry.com);
+		free(list->ent.raw_line);
+		while (list->ent.com[i])
+			free(list->ent.com[i++]);
+		free(list->ent.com[i]);
+		free(list->ent.com);
 		free(list);
 		list = tmp;
 	}
