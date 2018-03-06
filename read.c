@@ -10,13 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "asm.h"
 
 static line_list	*create_file(char *line, int nbr)
 {
 	line_list	*new;
-
 
 	if ((new = (line_list*)malloc(sizeof(line_list))))
 	{
@@ -40,71 +38,7 @@ static line_list	*create_file(char *line, int nbr)
 	return (new);
 }
 
-//int check_quotes(char *s)
-//{
-//	int i;
-//	int j;
-//
-//	i = 0;
-//	j = 0;
-//	while (s[i])
-//	{
-//		if (s[i] == '"')
-//			j++;
-//	}
-//	return (j);
-//}
-//
-#define SKIP " /t/n/v/r"
-//
-//int	check_endofstr(char *str)
-//{
-//	int i;
-//	int j;
-//
-//	i = ft_strlen(str);
-//	while (str[j])
-//	{
-//		if (ft_strchr(SKIP, str[j]))
-//			j++;
-//		else
-//			break ;
-//	}
-//	if (i != j)
-//		return (j);
-//	return (0);
-//}
-//
-//char	*dochitat(int fd, int *nbr, char *str)
-//{
-//	char *s;
-//	char *s1;
-//
-//	s1 = ft_strjoin("", str);
-//	while (get_next_line(fd, &s))
-//	{
-//		s1 = ft_strjoin(s1, s);
-//		(*nbr)++;
-//		if (ft_strchr(s1, 34))
-//		{
-//			if (!check_endofstr(ft_strchr(s1, 34) + 1))
-//				return (s1);
-//			break ;
-//		}
-//		else
-//			s =
-//	}
-//	s = ft_strjoin(str, s);
-//}
-//
-
-
-//char 	*cut_string(char *s, int pos, )
-//{
-//
-//}
-
-int 	check_eos(char *s)
+int					check_eos(char *s)
 {
 	int i;
 
@@ -119,22 +53,22 @@ int 	check_eos(char *s)
 	return (0);
 }
 
-int		skip_wspcs(char *s)
+int					skip_wspcs(char *s)
 {
 	int i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
 		if (s[i] == ' ' || s[i] == '\t')
 			i++;
 		else
-			break;
+			break ;
 	}
 	return (i);
 }
 
-int	check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
+int					check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
 {
 	pos += skip_wspcs(s);
 	if (!ft_strcmp(cmd, s + pos))
@@ -151,31 +85,64 @@ int	check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
 	return (pos + 1);
 }
 
-
-
-char 	*set_name(char *s, int fd, int *nbr, char *cmd)
+static char			*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 {
-	int i;
-	int r;
-	char *ptr;
-	char *res;
-	char *tmp;
+	char	*ptr;
+	int		r;
 
-
-
-	i = check_cmd_lable(s, cmd, 0, nbr);
 	ptr = ft_strchr(s + i, 34);
 	if (ptr == NULL)
-		res = ft_strjoin(s + i, "\n");
+		(*res) = ft_strjoin(s + i, "\n");
 	else
 	{
 		if ((r = check_eos(ptr + 1)) != 0)
 			exit(ft_printf("Syntax error on raw %d, symbol %d",
 						   (*nbr), i + r));
-		res = ft_strsub(s + i, 0, ptr - (s + i));
+		(*res) = ft_strsub(s + i, 0, ptr - (s + i));
 		ft_strdel(&s);
-		return (res);
+		return (ptr);
 	}
+	return (ptr);
+}
+
+static char			*some_modifying(char **res, char *s)
+{
+	char	*tmp;
+	char	*ptr;
+
+	ptr = ft_strchr(s, 34);
+	if (ptr == NULL)
+	{
+		tmp = *res;
+		*res = ft_strjoin(*res, s);
+		ft_strdel(&tmp);
+		tmp = *res;
+		*res = ft_strjoin(*res, "\n");
+		ft_strdel(&tmp);
+	}
+	return (ptr);
+}
+
+static void			some_modifying_two(char *s, char *ptr, char **res)
+{
+	char	*tmp;
+
+	tmp = *res;
+	ft_strclr(ptr);
+	*res = ft_strjoin(*res, s);
+	ft_strdel(&tmp);
+	ft_strdel(&s);
+}
+
+char				*set_name(char *s, int fd, int *nbr, char *cmd)
+{
+	int		r;
+	char	*ptr;
+	char	*res;
+
+	if ((ptr = get_the_fucking_ptr(s,
+								   check_cmd_lable(s, cmd, 0, nbr), nbr, &res)))
+		return (res);
 	while (ptr == NULL)
 	{
 		ft_strdel(&s);
@@ -184,34 +151,16 @@ char 	*set_name(char *s, int fd, int *nbr, char *cmd)
 		else if (r == 0)
 			exit(ft_printf("There is no %s at all", cmd + 1));
 		(*nbr)++;
-		ptr = ft_strchr(s, 34);
-		if (ptr == NULL)
-		{
-			tmp = res;
-			res = ft_strjoin(res, s);
-			ft_strdel(&tmp);
-			tmp = res;
-			res = ft_strjoin(res, "\n");
-			ft_strdel(&tmp);
-		}
+		ptr = some_modifying(&res, s);
 	}
-		if ((r = check_eos(ptr + 1)) != 0)
-			exit(ft_printf("Syntax error on raw %d, symbol %d",
-						   (*nbr), r));
-		ft_strclr(ptr);
-		tmp = res;
-		res = ft_strjoin(res, s);
-		ft_strdel(&tmp);
-		ft_strdel(&s);
+	if ((r = check_eos(ptr + 1)) != 0)
+		exit(ft_printf("Syntax error on raw %d, symbol %d",
+					   (*nbr), r));
+	some_modifying_two(s, ptr, &res);
 	return (res);
 }
 
-
-
-
-
-
-void 	ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
+void				ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
 {
 	if (ft_strstr(s, ".name") && main->name == NULL)
 		main->name = set_name(s, fd, nbr, ".name");
@@ -225,25 +174,32 @@ void 	ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
 		M_ERROR(-1, "Not a valid sequence");
 }
 
-
-
-int ft_read_file(char *name, line_list **list, t_main *main)
+static int			read_helper(line_list **list, char *str, int *nbr)
 {
-	int		fd;
-	char		*str;
 	line_list	*tmp;
-	int 		nbr;
-//	int 		flag;
 
+	tmp = *list;
+	if (tmp)
+	{
+		tmp = get_last(tmp);
+		if ((tmp->next = create_file(str, *nbr)) == NULL)
+			return (-1);
+	}
+	else if ((*list = create_file(str, *nbr)) == NULL)
+		return (-1);
+	return (0);
+}
 
+int					ft_read_file(char *name, line_list **list, t_main *main)
+{
+	int			fd;
+	char		*str;
+	int			nbr;
 
 	*list = NULL;
 	nbr = 0;
-
 	if ((fd = open(name, O_RDONLY)) == -1)
 		return (ft_err("open", 0));
-	//get_name(fd, &nbr)
-
 	while ((get_next_line(fd, &str)))
 	{
 		nbr++;
@@ -251,16 +207,8 @@ int ft_read_file(char *name, line_list **list, t_main *main)
 		{
 			if (main->name == NULL || main->comment == NULL)
 				ft_read_n_c(str, main, fd, &nbr);
-			else
-			{
-				tmp = *list;
-				if (tmp) {
-					tmp = get_last(tmp);
-					if ((tmp->next = create_file(str, nbr)) == NULL)
-						return (-1);
-				} else if ((*list = create_file(str, nbr)) == NULL)
-					return (-1);
-			}
+			else if (read_helper(list, str, &nbr) == -1)
+				return (-1);
 		}
 	}
 	close(fd);
