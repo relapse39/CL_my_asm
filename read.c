@@ -20,17 +20,17 @@ static line_list	*create_file(char *line, int nbr)
 
 	if ((new = (line_list*)malloc(sizeof(line_list))))
 	{
-		new->entry.raw_line = line;
-		if ((new->entry.com = ft_split_cmd(line)) == NULL)
+		new->ent.raw_line = line;
+		if ((new->ent.com = ft_split_cmd(line)) == NULL)
 			return (NULL);
-		new->entry.args_n = 0;
-		new->entry.first_type = 0;
-		new->entry.second_type = 0;
-		new->entry.third_type = 0;
-		new->entry.pos = 0;
-		new->entry.length = 0;
+		new->ent.args_n = 0;
+		new->ent.first_type = 0;
+		new->ent.second_type = 0;
+		new->ent.third_type = 0;
+		new->ent.pos = 0;
+		new->ent.length = 0;
 		new->next = NULL;
-		new->entry.nbr = nbr;
+		new->ent.nbr = nbr;
 	}
 	else
 	{

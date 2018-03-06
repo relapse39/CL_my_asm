@@ -48,7 +48,7 @@ struct 			line_t {
 };
 
 struct line_list_t {
-    line entry;
+    line ent;
     line_list *next;
 };
 

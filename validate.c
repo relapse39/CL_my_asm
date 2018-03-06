@@ -32,16 +32,16 @@ int		ft_check_args_n(line_list *list)
 {
 	int par;
 
-	par = ft_find_inst(list->entry.com[0]);
+	par = ft_find_inst(list->ent.com[0]);
 		if (par == -1)
 		{
 			ft_printf("Invalid instruction at token [TOKEN]");
-			ft_printf("[%03d",list->entry.nbr);
-			ft_printf(":%03d]",ft_get_pos(list->entry.raw_line, list->entry.com[0]) + 1);
-			ft_printf(" %s \"%s\"",ft_get_l_i_str(list->entry.com[0]), list->entry.com[0]);
+			ft_printf("[%03d",list->ent.nbr);
+			ft_printf(":%03d]",ft_get_pos(list->ent.raw_line, list->ent.com[0]) + 1);
+			ft_printf(" %s \"%s\"",ft_get_l_i_str(list->ent.com[0]), list->ent.com[0]);
 			return (-1);
 		}
-		if (g_op_tab[par].arg_num != list->entry.args_n)
+		if (g_op_tab[par].arg_num != list->ent.args_n)
 		{
 			ft_printf("Invalid parameter %d type ",g_op_tab[par].arg_num - 1);
 			ft_printf("register for instruction %s ",g_op_tab[par].name);
@@ -54,17 +54,17 @@ int		ft_check_args_n(line_list *list)
 int 	ft_print_err_inst(line_list *list, int n)
 {
 	ft_printf("Syntax error in token [TOKEN]");
-	ft_printf("[%03d:",list->entry.nbr);
-	ft_printf("%03d", ft_get_pos(list->entry.raw_line,list->entry.com[n]) + 1);
-	ft_printf("] INSTRUCTION \"%s\"",list->entry.com[n]);
+	ft_printf("[%03d:",list->ent.nbr);
+	ft_printf("%03d", ft_get_pos(list->ent.raw_line,list->ent.com[n]) + 1);
+	ft_printf("] INSTRUCTION \"%s\"",list->ent.com[n]);
 	return (-1);
 }
 
 int 	ft_print_err_lexical(line_list *list, int n)
 {
 	ft_printf("Lexical error at ");
-	ft_printf("[%d:",list->entry.nbr);
-	ft_printf("%d]", ft_get_pos(list->entry.raw_line,list->entry.com[n]) + 1);
+	ft_printf("[%d:",list->ent.nbr);
+	ft_printf("%d]", ft_get_pos(list->ent.raw_line,list->ent.com[n]) + 1);
 	return (-1);
 }
 
@@ -74,10 +74,10 @@ int 	ft_check_arg(line_list *list, int n)
 	int type;
 
 	type = -1;
-	n == 1 ? type = list->entry.first_type : (0);
-	n == 2 ? type = list->entry.second_type : (0);
-	n == 3 ? type = list->entry.third_type : (0);
-	i = ft_find_inst(list->entry.com[0]);
+	n == 1 ? type = list->ent.first_type : (0);
+	n == 2 ? type = list->ent.second_type : (0);
+	n == 3 ? type = list->ent.third_type : (0);
+	i = ft_find_inst(list->ent.com[0]);
 	if (type != T_DIR && type != T_REG && type != T_IND && type != INST)
 		return(ft_print_err_lexical(list, n));
 	if (type == INST)
@@ -94,12 +94,12 @@ int 	ft_check_arg(line_list *list, int n)
 	}
 	if(type == T_REG)
 	{
-		if(ft_atoi(list->entry.com[n] + 1) > REG_NUMBER)
+		if(ft_atoi(list->ent.com[n] + 1) > REG_NUMBER)
 		{
 			ft_printf("Syntax error in token [TOKEN]");
-			ft_printf("[%03d:",list->entry.nbr);
-			ft_printf("%03d", ft_get_pos(list->entry.raw_line,list->entry.com[n]) + 1);
-			ft_printf("] INSTRUCTION \"%s\"",list->entry.com[n]);
+			ft_printf("[%03d:",list->ent.nbr);
+			ft_printf("%03d", ft_get_pos(list->ent.raw_line,list->ent.com[n]) + 1);
+			ft_printf("] INSTRUCTION \"%s\"",list->ent.com[n]);
 			return (-1);
 		}
 	}
@@ -178,11 +178,11 @@ int 	ft_cycle_body(line_list *list)
 	int res;
 
 	res = 0;
-	if (list->entry.first_type != 0)
+	if (list->ent.first_type != 0)
 		res = ft_check_arg(list, 1);
-	if (list->entry.second_type != 0)
+	if (list->ent.second_type != 0)
 		res += ft_check_arg(list, 2);
-	if (list->entry.third_type != 0)
+	if (list->ent.third_type != 0)
 		res += ft_check_arg(list, 3);
 	if (res < 0)
 		return (-1);

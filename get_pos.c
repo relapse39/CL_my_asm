@@ -64,16 +64,16 @@ static int	ft_get_special_inst(char **tab, int i, int size)
 static int 	ft_get_inst_pos(line_list *list, int i, int pos)
 {
 
-	list->entry.pos = pos;
-	if (ft_is_simple_type(list->entry.com[i]) != 0)
+	list->ent.pos = pos;
+	if (ft_is_simple_type(list->ent.com[i]) != 0)
 	{
-		pos += ft_is_simple_type(list->entry.com[i]);
-		list->entry.length = pos;
+		pos += ft_is_simple_type(list->ent.com[i]);
+		list->ent.length = pos;
 		return (pos);
 	}
 	pos += 2;
-	pos = ft_get_special_inst(list->entry.com, i, pos);
-	list->entry.length = pos;
+	pos = ft_get_special_inst(list->ent.com, i, pos);
+	list->ent.length = pos;
 	return (pos);
 }
 
@@ -88,13 +88,13 @@ void	ft_get_position(line_list *list)
 	while (tmp)
 	{
 		i = 0;
-		if (*tmp->entry.com != NULL && tmp->entry.com[0][ft_strlen(*tmp->entry.com) - 1] == ':')
+		if (*tmp->ent.com != NULL && tmp->ent.com[0][ft_strlen(*tmp->ent.com) - 1] == ':')
 		{
-			tmp->entry.length = pos;
-			tmp->entry.pos = pos;
+			tmp->ent.length = pos;
+			tmp->ent.pos = pos;
 			i++;
 		}
-		if (tmp->entry.com[i] && ft_inst_check(tmp->entry.com[i]))
+		if (tmp->ent.com[i] && ft_inst_check(tmp->ent.com[i]))
 			pos = ft_get_inst_pos(tmp, i, pos);
 
 		tmp = tmp->next;
