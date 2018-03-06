@@ -1,8 +1,16 @@
-//
-// Created by Admin on 13.02.18.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dshevche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/06 13:59:22 by dshevche          #+#    #+#             */
+/*   Updated: 2018/03/06 13:59:25 by dshevche         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <CoreFoundation/CoreFoundation.h>
+
 #include "asm.h"
 
 static line_list	*create_file(char *line, int nbr)
