@@ -6,7 +6,7 @@
 /*   By: dshevche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 13:59:22 by dshevche          #+#    #+#             */
-/*   Updated: 2018/03/06 13:59:25 by dshevche         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:32:42 by dshevche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@ int					check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
 	pos += skip_wspcs(s);
 	if (!ft_strcmp(cmd, s + pos))
 		exit(ft_printf("Syntax error on raw %d, symbol %d",
-					   (*nbr), ft_strlen(cmd) + pos));
+							(*nbr), ft_strlen(cmd) + pos));
 	pos += ft_strlen(cmd);
 	pos += skip_wspcs(s + pos);
 	if (s[pos] != 34 && s[pos] != '\0')
 		exit(ft_printf("Syntax error on raw %d, symbol %d",
-					   (*nbr), pos));
+					(*nbr), pos));
 	else if (s[pos] == '\0')
 		exit(ft_printf("Break line %d, symbol %d",
-					   (*nbr) + 1, 0));
+				(*nbr) + 1, 0));
 	return (pos + 1);
 }
 
@@ -97,7 +97,7 @@ static char			*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 	{
 		if ((r = check_eos(ptr + 1)) != 0)
 			exit(ft_printf("Syntax error on raw %d, symbol %d",
-						   (*nbr), i + r));
+					(*nbr), i + r));
 		(*res) = ft_strsub(s + i, 0, ptr - (s + i));
 		ft_strdel(&s);
 		return (ptr);
@@ -141,7 +141,7 @@ char				*set_name(char *s, int fd, int *nbr, char *cmd)
 	char	*res;
 
 	if ((ptr = get_the_fucking_ptr(s,
-								   check_cmd_lable(s, cmd, 0, nbr), nbr, &res)))
+					check_cmd_lable(s, cmd, 0, nbr), nbr, &res)))
 		return (res);
 	while (ptr == NULL)
 	{
@@ -155,7 +155,7 @@ char				*set_name(char *s, int fd, int *nbr, char *cmd)
 	}
 	if ((r = check_eos(ptr + 1)) != 0)
 		exit(ft_printf("Syntax error on raw %d, symbol %d",
-					   (*nbr), r));
+					(*nbr), r));
 	some_modifying_two(s, ptr, &res);
 	return (res);
 }
