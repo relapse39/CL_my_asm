@@ -40,7 +40,6 @@ static line_list	*create_file(char *line, int nbr)
 	return (new);
 }
 
-
 int 	check_eos(char *s)
 {
 	int i;
@@ -87,9 +86,6 @@ int	check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
 					   (*nbr) + 1, 0));
 	return (pos + 1);
 }
-
-
-
 
 static char	*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 {
@@ -179,8 +175,6 @@ void 	ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
 	else
 		M_ERROR(-1, "Not a valid sequence");
 }
-
-
 
 int ft_read_file(char *name, line_list **list, t_main *main)
 {
