@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshevche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmelehov <dmelehov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:02:21 by dshevche          #+#    #+#             */
-/*   Updated: 2018/03/06 14:02:23 by dshevche         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:35:08 by dmelehov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		ft_is_space(char c)
+int					ft_is_space(char c)
 {
 	if (c == '\t' || c == ' ' || c == SEPARATOR_CHAR)
 		return (1);
@@ -20,7 +20,7 @@ int		ft_is_space(char c)
 		return (0);
 }
 
-static	int		ft_count_words(const char *str)
+static	int			ft_count_words(const char *str)
 {
 	int	word;
 	int	i;
@@ -43,7 +43,7 @@ static	int		ft_count_words(const char *str)
 static	char		*ft_word(const char *str, int *i)
 {
 	char	*s;
-	int	k;
+	int		k;
 
 	if (!(s = (char *)malloc(sizeof(char) * (ft_strlen(str)))))
 		return (NULL);
@@ -60,18 +60,18 @@ static	char		*ft_word(const char *str, int *i)
 	return (s);
 }
 
-char *ft_clear_comment(char *str)
+char				*ft_clear_comment(char *str)
 {
-	int 	i;
-	int 	flag;
+	int	i;
+	int	flag;
 
 	flag = 0;
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (flag == 1)
 			str[i] = 0;
-		if(str[i] == '#')
+		if (str[i] == '#')
 		{
 			str[i] = 0;
 			flag = 1;
@@ -83,9 +83,9 @@ char *ft_clear_comment(char *str)
 
 char				**ft_split_cmd(char *str)
 {
-	int	i;
-	int	j;
-	int	wrd;
+	int		i;
+	int		j;
+	int		wrd;
 	char	**s;
 
 	i = 0;
