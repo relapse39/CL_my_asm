@@ -91,7 +91,6 @@ int 			ft_assemble(char *name)
 		return (ft_err("malloc", -1));
 	if (ft_read_file(name, &list, main) == -1)
 		return (ft_free_list(list, main, -1));
-	//ft_prin_t(list);
 	if (ft_check_end(name))
 		return (ft_free_list(list, main, -1));
 	ft_get_position(list);
