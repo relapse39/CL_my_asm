@@ -145,7 +145,6 @@ static int		ft_param_code(t_main *main, char **tab, int *index)
 			if (ft_spec_case(tab[0], num) == 1)
 				ft_write(main->bytes, ft_atoi_1(&(tab[num][1])), index, 2);
 			else {
-				//ft_printf("___%d___", ft_atoi(&(tab[num][1])));
 				ft_write(main->bytes, ft_atoi(&(tab[num][1])), index, 4);
 			}
 		}
@@ -166,7 +165,6 @@ int		ft_bytecode(line_list *list, t_main *main)
 	while(++i < size)
 		main->bytes[i] = 0;
 	i = 0;
-	ft_prin_t(list);
 	while (list)
 	{
 		if (ft_get_op(list->entry.com[0], list->entry.raw_line) == 0)
