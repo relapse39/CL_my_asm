@@ -6,7 +6,7 @@
 /*   By: dmelehov <dmelehov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 13:58:40 by dshevche          #+#    #+#             */
-/*   Updated: 2018/03/06 16:38:47 by dmelehov         ###   ########.fr       */
+/*   Updated: 2018/03/06 17:12:48 by dmelehov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		little_to_big_endian(int nb)
 {
-	nb = ((nb << 8) & 0xFF00FF00) | ((nb >> 8) & 0xFF00FF );
+	nb = ((nb << 8) & 0xFF00FF00) | ((nb >> 8) & 0xFF00FF);
 	return (nb << 16) | ((nb >> 16) & 0xFFFF);
 }
 
@@ -47,7 +47,8 @@ int		get_header(t_main *main, int size)
 	head_tmp = (unsigned char*)main->header;
 	while (i < head_size)
 		head_tmp[i++] = 0;
-	main->header->magic = (unsigned int)little_to_big_endian(COREWAR_EXEC_MAGIC);
+	main->header->magic =
+	(unsigned int)little_to_big_endian(COREWAR_EXEC_MAGIC);
 	main->header->prog_size = (unsigned int)little_to_big_endian(size);
 	ft_put_name_comment(main);
 	return (0);
