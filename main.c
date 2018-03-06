@@ -50,7 +50,7 @@ int				ft_free_list(line_list *list, t_main *main, int ret)
 	{
 		i = 0;
 		tmp = list->next;
-		free(list->ent.raw_line);
+		free(list->ent.r_line);
 		while (list->ent.com[i])
 			free(list->ent.com[i++]);
 		free(list->ent.com[i]);

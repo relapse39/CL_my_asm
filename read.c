@@ -10,17 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "asm.h"
 
 static line_list	*create_file(char *line, int nbr)
 {
 	line_list	*new;
 
-
 	if ((new = (line_list*)malloc(sizeof(line_list))))
 	{
-		new->ent.raw_line = line;
+		new->ent.r_line = line;
 		if ((new->ent.com = ft_split_cmd(line)) == NULL)
 			return (NULL);
 		new->ent.args_n = 0;
@@ -40,7 +38,7 @@ static line_list	*create_file(char *line, int nbr)
 	return (new);
 }
 
-int 	check_eos(char *s)
+int					check_eos(char *s)
 {
 	int i;
 
@@ -55,39 +53,39 @@ int 	check_eos(char *s)
 	return (0);
 }
 
-int		skip_wspcs(char *s)
+int					skip_wspcs(char *s)
 {
 	int i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
 		if (s[i] == ' ' || s[i] == '\t')
 			i++;
 		else
-			break;
+			break ;
 	}
 	return (i);
 }
 
-int	check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
+int					check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
 {
 	pos += skip_wspcs(s);
 	if (!ft_strcmp(cmd, s + pos))
 		exit(ft_printf("Syntax error on raw %d, symbol %d",
-					   (*nbr), ft_strlen(cmd) + pos));
+					(*nbr), ft_strlen(cmd) + pos));
 	pos += ft_strlen(cmd);
 	pos += skip_wspcs(s + pos);
 	if (s[pos] != 34 && s[pos] != '\0')
 		exit(ft_printf("Syntax error on raw %d, symbol %d",
-					   (*nbr), pos));
+					(*nbr), pos));
 	else if (s[pos] == '\0')
 		exit(ft_printf("Break line %d, symbol %d",
-					   (*nbr) + 1, 0));
+					(*nbr) + 1, 0));
 	return (pos + 1);
 }
 
-static char	*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
+static char			*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 {
 	char	*ptr;
 	int		r;
@@ -99,7 +97,7 @@ static char	*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 	{
 		if ((r = check_eos(ptr + 1)) != 0)
 			exit(ft_printf("Syntax error on raw %d, symbol %d",
-						   (*nbr), i + r));
+						(*nbr), i + r));
 		(*res) = ft_strsub(s + i, 0, ptr - (s + i));
 		ft_strdel(&s);
 		return (ptr);
@@ -107,7 +105,7 @@ static char	*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 	return (ptr);
 }
 
-static char	*some_modifying(char **res, char *s)
+static char			*some_modifying(char **res, char *s)
 {
 	char	*tmp;
 	char	*ptr;
@@ -125,7 +123,7 @@ static char	*some_modifying(char **res, char *s)
 	return (ptr);
 }
 
-static void	some_modifying_two(char *s, char *ptr, char **res)
+static void			some_modifying_two(char *s, char *ptr, char **res)
 {
 	char	*tmp;
 
@@ -136,15 +134,15 @@ static void	some_modifying_two(char *s, char *ptr, char **res)
 	ft_strdel(&s);
 }
 
-char 	*set_name(char *s, int fd, int *nbr, char *cmd)
+char				*set_name(char *s, int fd, int *nbr, char *cmd)
 {
-	int r;
-	char *ptr;
-	char *res;
+	int		r;
+	char	*ptr;
+	char	*res;
 
 	if ((ptr = get_the_fucking_ptr(s,
 		check_cmd_lable(s, cmd, 0, nbr), nbr, &res)))
-		return(res);
+		return (res);
 	while (ptr == NULL)
 	{
 		ft_strdel(&s);
@@ -157,12 +155,12 @@ char 	*set_name(char *s, int fd, int *nbr, char *cmd)
 	}
 	if ((r = check_eos(ptr + 1)) != 0)
 		exit(ft_printf("Syntax error on raw %d, symbol %d",
-					   (*nbr), r));
+					(*nbr), r));
 	some_modifying_two(s, ptr, &res);
 	return (res);
 }
 
-void 	ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
+void				ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
 {
 	if (ft_strstr(s, ".name") && main->name == NULL)
 		main->name = set_name(s, fd, nbr, ".name");
@@ -176,16 +174,30 @@ void 	ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
 		M_ERROR(-1, "Not a valid sequence");
 }
 
-int ft_read_file(char *name, line_list **list, t_main *main)
+static int			read_helper(line_list **list, char *str, int *nbr)
 {
-	int		fd;
-	char		*str;
 	line_list	*tmp;
-	int 		nbr;
+
+	tmp = *list;
+	if (tmp)
+	{
+		tmp = get_last(tmp);
+		if ((tmp->next = create_file(str, *nbr)) == NULL)
+			return (-1);
+	}
+	else if ((*list = create_file(str, *nbr)) == NULL)
+		return (-1);
+	return (0);
+}
+
+int					ft_read_file(char *name, line_list **list, t_main *main)
+{
+	int			fd;
+	char		*str;
+	int			nbr;
 
 	*list = NULL;
 	nbr = 0;
-
 	if ((fd = open(name, O_RDONLY)) == -1)
 		return (ft_err("open", 0));
 	while ((get_next_line(fd, &str)))
@@ -195,16 +207,8 @@ int ft_read_file(char *name, line_list **list, t_main *main)
 		{
 			if (main->name == NULL || main->comment == NULL)
 				ft_read_n_c(str, main, fd, &nbr);
-			else
-			{
-				tmp = *list;
-				if (tmp) {
-					tmp = get_last(tmp);
-					if ((tmp->next = create_file(str, nbr)) == NULL)
-						return (-1);
-				} else if ((*list = create_file(str, nbr)) == NULL)
-					return (-1);
-			}
+			else if (read_helper(list, str, &nbr) == -1)
+				return (-1);
 		}
 	}
 	close(fd);

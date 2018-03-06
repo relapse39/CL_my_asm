@@ -169,10 +169,10 @@ int		ft_bytecode(line_list *list, t_main *main)
 	ft_prin_t(list);
 	while (list)
 	{
-		if (ft_get_op(list->ent.com[0], list->ent.raw_line) == 0)
+		if (ft_get_op(list->ent.com[0], list->ent.r_line) == 0)
 			return (-1);
 		else
-			main->bytes[i] = ft_get_op(list->ent.com[0], list->ent.raw_line);
+			main->bytes[i] = ft_get_op(list->ent.com[0], list->ent.r_line);
 		i += 1;
 			ft_arg_code(main->bytes, list, &i);
 		ft_param_code(main, list->ent.com, &i);

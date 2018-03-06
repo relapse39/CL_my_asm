@@ -26,7 +26,7 @@ int     ft_check_label_char(line_list *list, int n)
         {
             ft_printf("Lexical error at [");
 			ft_printf("%d:", list->ent.nbr);
-			ft_printf("%d]", ft_get_pos(list->ent.raw_line, list->ent.com[n]) + i + 1);
+			ft_printf("%d]", ft_get_pos(list->ent.r_line, list->ent.com[n]) + i + 1);
             return (-1);
         }
     }
@@ -121,7 +121,7 @@ char *ft_get_byte(line_list *list, line_list *tmp, int i, char *err)
     ft_printf("No such label %s", err + 1);
     ft_printf(" while attempting to dereference token [TOKEN]");
     ft_printf("[%03d:", tmp->ent.nbr);
-    ft_printf("%d]", ft_get_pos(tmp->ent.raw_line, err) + 1);
+    ft_printf("%d]", ft_get_pos(tmp->ent.r_line, err) + 1);
     err[0] == '%' ? ft_printf(" ") :ft_printf(" IN");
     ft_printf("DIRECT_LABEL %s", err);
 	return (NULL);

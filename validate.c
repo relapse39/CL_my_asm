@@ -37,7 +37,7 @@ int		ft_check_args_n(line_list *list)
 		{
 			ft_printf("Invalid instruction at token [TOKEN]");
 			ft_printf("[%03d",list->ent.nbr);
-			ft_printf(":%03d]",ft_get_pos(list->ent.raw_line, list->ent.com[0]) + 1);
+			ft_printf(":%03d]",ft_get_pos(list->ent.r_line, list->ent.com[0]) + 1);
 			ft_printf(" %s \"%s\"",ft_get_l_i_str(list->ent.com[0]), list->ent.com[0]);
 			return (-1);
 		}
@@ -45,7 +45,7 @@ int		ft_check_args_n(line_list *list)
 		{
 			ft_printf("Invalid parameter %d type ",g_op_tab[par].arg_num - 1);
 			ft_printf("register for instruction %s ",g_op_tab[par].name);
-			//ft_printf("bad nbr. of args in line: %s", list->ent.raw_line);
+			//ft_printf("bad nbr. of args in line: %s", list->ent.r_line);
 			return (-1);
 		}
 	return (0);
@@ -55,7 +55,7 @@ int 	ft_print_err_inst(line_list *list, int n)
 {
 	ft_printf("Syntax error in token [TOKEN]");
 	ft_printf("[%03d:",list->ent.nbr);
-	ft_printf("%03d", ft_get_pos(list->ent.raw_line,list->ent.com[n]) + 1);
+	ft_printf("%03d", ft_get_pos(list->ent.r_line,list->ent.com[n]) + 1);
 	ft_printf("] INSTRUCTION \"%s\"",list->ent.com[n]);
 	return (-1);
 }
@@ -64,7 +64,7 @@ int 	ft_print_err_lexical(line_list *list, int n)
 {
 	ft_printf("Lexical error at ");
 	ft_printf("[%d:",list->ent.nbr);
-	ft_printf("%d]", ft_get_pos(list->ent.raw_line,list->ent.com[n]) + 1);
+	ft_printf("%d]", ft_get_pos(list->ent.r_line,list->ent.com[n]) + 1);
 	return (-1);
 }
 
@@ -98,7 +98,7 @@ int 	ft_check_arg(line_list *list, int n)
 		{
 			ft_printf("Syntax error in token [TOKEN]");
 			ft_printf("[%03d:",list->ent.nbr);
-			ft_printf("%03d", ft_get_pos(list->ent.raw_line,list->ent.com[n]) + 1);
+			ft_printf("%03d", ft_get_pos(list->ent.r_line,list->ent.com[n]) + 1);
 			ft_printf("] INSTRUCTION \"%s\"",list->ent.com[n]);
 			return (-1);
 		}
