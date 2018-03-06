@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-void	ft_add_type(line_list *line, int com_n, int type)
+void	ft_ad_t(line_list *line, int com_n, int type)
 {
 	if (com_n == 0)
 		line->ent.f_type = type;
@@ -78,7 +78,7 @@ int		ft_is_ind(char *str)
 	return (1);
 }
 
-int		ft_is_inst(char *str)
+int		ft_is_int(char *str)
 {
 	int i;
 
@@ -90,6 +90,20 @@ int		ft_is_inst(char *str)
 		i++;
 	}
 	return (1);
+}
+
+void	ft_get_type_param_2(line_list *line, int com_n, int i)
+{
+	if (ft_is_reg(line->ent.com[i]) == 1)
+		ft_ad_t(line, com_n, T_REG);
+	else if (ft_is_dir(line->ent.com[i]) == 1)
+		ft_ad_t(line, com_n, T_DIR);
+	else if (ft_is_ind(line->ent.com[i]) == 1)
+		ft_ad_t(line, com_n, T_IND);
+	else if (ft_is_int(line->ent.com[i]) == 1)
+		ft_ad_t(line, com_n, INST);
+	else
+		ft_ad_t(line, com_n, 10);
 }
 
 int		ft_get_type_param(line_list *line)
@@ -107,16 +121,7 @@ int		ft_get_type_param(line_list *line)
 		i++;
 		while (line->ent.com[i - 1] && line->ent.com[i])
 		{
-			if (ft_is_reg(line->ent.com[i]) == 1)
-				ft_add_type(line, com_n, T_REG);
-			else if (ft_is_dir(line->ent.com[i]) == 1)
-				ft_add_type(line, com_n, T_DIR);
-			else if (ft_is_ind(line->ent.com[i]) == 1)
-				ft_add_type(line, com_n, T_IND);
-			else if (ft_is_inst(line->ent.com[i]) == 1)
-				ft_add_type(line, com_n, INST);
-			else
-				ft_add_type(line, com_n, 10);
+			ft_get_type_param_2(line, com_n, i);
 			i++;
 			com_n++;
 		}
