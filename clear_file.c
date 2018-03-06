@@ -12,18 +12,6 @@
 
 #include "asm.h"
 
-int					ft_is_delete(char **com)
-{
-	if (com[0] == NULL)
-		return (1);
-	if (com[0] != NULL && (ft_strcmp(com[0], NAME_CMD_STRING) == 0
-				|| ft_strcmp(com[0], COMMENT_CMD_STRING) == 0
-				|| ft_is_label(com[0])))
-		return (1);
-	else
-		return (0);
-}
-
 line_list			*ft_remove(line_list *list)
 {
 	int				i;
@@ -45,17 +33,6 @@ line_list			*ft_remove(line_list *list)
 	}
 	list->next = ft_remove(list->next);
 	return (list);
-}
-
-int					ft_got_thresh(line_list *list)
-{
-	while (list)
-	{
-		if (ft_is_delete((list->ent.com)))
-			return (1);
-		list = list->next;
-	}
-	return (-1);
 }
 
 int					ft_get_l(line_list *list)

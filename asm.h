@@ -61,6 +61,19 @@ typedef struct	s_main
     int 			name_c;
 }				t_main;
 
+char				*some_modifying(char **res, char *s);
+void				some_modifying_two(char *s, char *ptr, char **res);
+int					read_helper(line_list **list, char *str, int *nbr);
+int					skip_wspcs(char *s);
+int					check_eos(char *s);
+line_list			*create_file(char *line, int nbr);
+int					ft_print_err_arg(line_list *list, int n);
+int					ft_print_err_lexical(line_list *list, int n);
+int					ft_print_err_inst(line_list *list, int n);
+int					ft_is_reg(char *str);
+void				ft_ad_t(line_list *line, int com_n, int type);
+int					ft_got_thresh(line_list *list);
+int					ft_is_delete(char **com);
 int 				ft_check_lables(line_list *list);
 int     			ft_check_label_char(line_list *list, int n);
 int					ft_atoi_1(const char *str);

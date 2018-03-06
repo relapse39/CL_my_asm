@@ -12,33 +12,6 @@
 
 #include "asm.h"
 
-void	ft_ad_t(line_list *line, int com_n, int type)
-{
-	if (com_n == 0)
-		line->ent.f_type = type;
-	else if (com_n == 1)
-		line->ent.s_type = type;
-	else if (com_n == 2)
-		line->ent.t_type = type;
-}
-
-int		ft_is_reg(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[0] != 'r')
-		return (-1);
-	str++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (-1);
-		i++;
-	}
-	return (1);
-}
-
 int		ft_is_dir(char *str)
 {
 	int i;

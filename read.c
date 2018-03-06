@@ -12,62 +12,6 @@
 
 #include "asm.h"
 
-static line_list	*create_file(char *line, int nbr)
-{
-	line_list	*new;
-
-	if ((new = (line_list*)malloc(sizeof(line_list))))
-	{
-		new->ent.r_line = line;
-		if ((new->ent.com = ft_split_cmd(line)) == NULL)
-			return (NULL);
-		new->ent.args_n = 0;
-		new->ent.f_type = 0;
-		new->ent.s_type = 0;
-		new->ent.t_type = 0;
-		new->ent.pos = 0;
-		new->ent.length = 0;
-		new->next = NULL;
-		new->ent.nbr = nbr;
-	}
-	else
-	{
-		ft_putstr("error: malloc\n");
-		return (NULL);
-	}
-	return (new);
-}
-
-int					check_eos(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == ' ' || s[i] == '\t')
-			i++;
-		else
-			return (1);
-	}
-	return (0);
-}
-
-int					skip_wspcs(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == ' ' || s[i] == '\t')
-			i++;
-		else
-			break ;
-	}
-	return (i);
-}
-
 int					check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
 {
 	pos += skip_wspcs(s);
@@ -87,8 +31,8 @@ int					check_cmd_lable(char *s, char *cmd, int pos, int *nbr)
 
 static char			*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 {
-	char	*ptr;
-	int		r;
+	char			*ptr;
+	int				r;
 
 	ptr = ft_strchr(s + i, 34);
 	if (ptr == NULL)
@@ -105,40 +49,11 @@ static char			*get_the_fucking_ptr(char *s, int i, int *nbr, char **res)
 	return (ptr);
 }
 
-static char			*some_modifying(char **res, char *s)
-{
-	char	*tmp;
-	char	*ptr;
-
-	ptr = ft_strchr(s, 34);
-	if (ptr == NULL)
-	{
-		tmp = *res;
-		*res = ft_strjoin(*res, s);
-		ft_strdel(&tmp);
-		tmp = *res;
-		*res = ft_strjoin(*res, "\n");
-		ft_strdel(&tmp);
-	}
-	return (ptr);
-}
-
-static void			some_modifying_two(char *s, char *ptr, char **res)
-{
-	char	*tmp;
-
-	tmp = *res;
-	ft_strclr(ptr);
-	*res = ft_strjoin(*res, s);
-	ft_strdel(&tmp);
-	ft_strdel(&s);
-}
-
 char				*set_name(char *s, int fd, int *nbr, char *cmd)
 {
-	int		r;
-	char	*ptr;
-	char	*res;
+	int				r;
+	char			*ptr;
+	char			*res;
 
 	if ((ptr = get_the_fucking_ptr(s,
 					check_cmd_lable(s, cmd, 0, nbr), nbr, &res)))
@@ -172,22 +87,6 @@ void				ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
 		M_ERROR(-1, "a comment already exist");
 	else
 		M_ERROR(-1, "Not a valid sequence");
-}
-
-static int			read_helper(line_list **list, char *str, int *nbr)
-{
-	line_list	*tmp;
-
-	tmp = *list;
-	if (tmp)
-	{
-		tmp = get_last(tmp);
-		if ((tmp->next = create_file(str, *nbr)) == NULL)
-			return (-1);
-	}
-	else if ((*list = create_file(str, *nbr)) == NULL)
-		return (-1);
-	return (0);
 }
 
 int					ft_read_file(char *name, line_list **list, t_main *main)

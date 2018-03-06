@@ -48,32 +48,6 @@ int		ft_check_args_n(line_list *list)
 	return (0);
 }
 
-int		ft_print_err_inst(line_list *list, int n)
-{
-	ft_printf("Syntax error in token [TOKEN]");
-	ft_printf("[%03d:", list->ent.nbr);
-	ft_printf("%03d", ft_get_pos(list->ent.r_line, list->ent.com[n]) + 1);
-	ft_printf("] INSTRUCTION \"%s\"", list->ent.com[n]);
-	return (-1);
-}
-
-int		ft_print_err_lexical(line_list *list, int n)
-{
-	ft_printf("Lexical error at ");
-	ft_printf("[%d:", list->ent.nbr);
-	ft_printf("%d]", ft_get_pos(list->ent.r_line, list->ent.com[n]) + 1);
-	return (-1);
-}
-
-int		ft_print_err_arg(line_list *list, int n)
-{
-	ft_printf("Syntax error in token [TOKEN]");
-	ft_printf("[%03d:", list->ent.nbr);
-	ft_printf("%03d", ft_get_pos(list->ent.r_line, list->ent.com[n]) + 1);
-	ft_printf("] INSTRUCTION \"%s\"", list->ent.com[n]);
-	return (-1);
-}
-
 int		ft_check_arg(line_list *list, int n)
 {
 	int	i;

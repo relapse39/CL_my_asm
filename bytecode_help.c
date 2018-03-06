@@ -51,5 +51,3 @@ int					ft_get_max(line_list *list)
 		list = list->next;
 	return (list->ent.length);
 }
-
-
