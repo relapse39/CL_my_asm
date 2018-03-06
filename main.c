@@ -64,25 +64,26 @@ int				ft_free_list(line_list *list, t_main *main, int ret)
 	free(main->header);
 	free(main);
 	if (ret == -1)
-		return(-1);
+		return (-1);
 	else
 		return (0);
 }
 
-t_main 			*ft_init_main(void)
+t_main			*ft_init_main(void)
 {
 	t_main		*main;
+
 	if ((main = (t_main*)malloc(sizeof(t_main))) == NULL)
 		return (NULL);
 	main->name_c = 0;
 	main->name = NULL;
 	main->comment = NULL;
-	main->bytes =  NULL;
+	main->bytes = NULL;
 	main->header = NULL;
 	return (main);
 }
 
-int 			ft_assemble(char *name)
+int				ft_assemble(char *name)
 {
 	line_list	*list;
 	t_main		*main;
@@ -105,12 +106,11 @@ int 			ft_assemble(char *name)
 		return (ft_free_list(list, main, -1));
 	if (get_header(main, ft_get_max(list)) == -1)
 		return (ft_free_list(list, main, -1));
-	if (write_in_file(list,main,name) == -1)
+	if (write_in_file(list, main, name) == -1)
 		return (ft_free_list(list, main, -1));
 	ft_free_list(list, main, 0);
 	return (0);
 }
-
 
 int				main(int argc, char **argv)
 {
@@ -119,7 +119,6 @@ int				main(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-
 		if ((ft_assemble(argv[i])) == -1)
 			return (-1);
 		i++;
@@ -129,6 +128,5 @@ int				main(int argc, char **argv)
 		ft_putstr("no input files\n");
 		return (1);
 	}
-
 	return (0);
 }
