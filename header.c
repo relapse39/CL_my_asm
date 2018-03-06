@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   header.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshevche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmelehov <dmelehov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 13:58:40 by dshevche          #+#    #+#             */
-/*   Updated: 2018/03/06 13:58:41 by dshevche         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:38:47 by dmelehov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "asm.h"
-
-
-//static void	init_header(t_header *head)
-//{
-//	unsigned char	*tmp;
-//	int		size;
-//	int		i;
-//
-//	i = 0;
-//	size = sizeof(*head);
-//	tmp = (unsigned char*)head;
-//	while (i < size)
-//		tmp[i++] = 0;
-//}
-
 
 int		little_to_big_endian(int nb)
 {
@@ -34,10 +18,9 @@ int		little_to_big_endian(int nb)
 	return (nb << 16) | ((nb >> 16) & 0xFFFF);
 }
 
-
 void	ft_put_name_comment(t_main *main)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (main->name[i++])
@@ -54,8 +37,8 @@ void	ft_put_name_comment(t_main *main)
 int		get_header(t_main *main, int size)
 {
 	unsigned char	*head_tmp;
-	int		head_size;
-	int		i;
+	int				head_size;
+	int				i;
 
 	if ((main->header = (t_header*)malloc(sizeof(*main->header))) == NULL)
 		return (ft_err("malloc", -1));
