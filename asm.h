@@ -36,7 +36,7 @@ typedef struct line_t line;
 typedef struct line_list_t line_list;
 
 struct 			line_t {
-    char 		*raw_line;
+    char 		*r_line;
     char 		**com;
     int 		f_type;
     int 		s_type;

@@ -84,7 +84,7 @@ int     ft_check_label_char(line_list *list, int n)
 	{
 		if (ft_strchr(LABEL_CHARS, list->ent.com[n][++i]) == 0)
 		{
-			pos = ft_get_pos(list->ent.raw_line, list->ent.com[n]);
+			pos = ft_get_pos(list->ent.r_line, list->ent.com[n]);
 			ft_printf("Lexical error at [");
 			ft_printf("%d:", list->ent.nbr);
 			ft_printf("%d]", pos + i + 1);

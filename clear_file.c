@@ -36,7 +36,7 @@ line_list   	*ft_remove(line_list *list)
 	{
 		line_list *tmp;
 		tmp = list->next;
-		free(list->ent.raw_line);
+		free(list->ent.r_line);
 		while(list->ent.com[++i])
 			free(list->ent.com[i]);
 		free(list->ent.com[i]);

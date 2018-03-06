@@ -20,7 +20,7 @@ static line_list	*create_file(char *line, int nbr)
 
 	if ((new = (line_list*)malloc(sizeof(line_list))))
 	{
-		new->ent.raw_line = line;
+		new->ent.r_line = line;
 		if ((new->ent.com = ft_split_cmd(line)) == NULL)
 			return (NULL);
 		new->ent.args_n = 0;
