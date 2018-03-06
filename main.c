@@ -75,7 +75,6 @@ t_main			*ft_init_main(void)
 
 	if ((main = (t_main*)malloc(sizeof(t_main))) == NULL)
 		return (NULL);
-	main->name_c = 0;
 	main->name = NULL;
 	main->comment = NULL;
 	main->bytes = NULL;

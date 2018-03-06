@@ -1,36 +1,36 @@
-//
-// Created by Admin on 06.12.17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dshevche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/06 18:08:32 by dshevche          #+#    #+#             */
+/*   Updated: 2018/03/06 18:08:33 by dshevche         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef ASM_H
-#define ASM_H
+# define ASM_H
 
-#include "libft/includes/libft.h"
-#include "op.h"
-#include <stdio.h>
+# include "libft/includes/libft.h"
+# include "op.h"
 
-
-# define REG	(1)
-# define DIR	(2)
-# define IND	(3)
-# define INST   (12)
-#define LABEL_CHARS_1				"abcdefghijklmnopqrstuvwxyz_0123456789:"
-#define REG_MASK_1 0b01000000
-#define REG_MASK_2 0b00010000
-#define REG_MASK_3 0b00000100
-#define IND_MASK_1 0b11000000
-#define IND_MASK_2 0b00110000
-#define IND_MASK_3 0b00001100
-#define DIR_MASK_1 0b10000000
-#define DIR_MASK_2 0b00100000
-#define DIR_MASK_3 0b00001000
-#define TWO_BYTE_MASK 0b11111111
-#define FOUR_BYTE_MASK_1 0b00000000111111110000000000000000
-#define FOUR_BYTE_MASK_2 0b00000000000000001111111100000000
-#define FULL_BYTE 0b11111111
-#define MY_LONG_MAX 9223372036854775807
-
-
+# define INST (12)
+# define REG_MASK_1 0b01000000
+# define REG_MASK_2 0b00010000
+# define REG_MASK_3 0b00000100
+# define IND_MASK_1 0b11000000
+# define IND_MASK_2 0b00110000
+# define IND_MASK_3 0b00001100
+# define DIR_MASK_1 0b10000000
+# define DIR_MASK_2 0b00100000
+# define DIR_MASK_3 0b00001000
+# define TWO_BYTE_MASK 0b11111111
+# define FOUR_BYTE_MASK_1 0b00000000111111110000000000000000
+# define FOUR_BYTE_MASK_2 0b00000000000000001111111100000000
+# define FULL_BYTE 0b11111111
+# define MY_LONG_MAX 9223372036854775807
 
 typedef struct line_t line;
 typedef struct line_list_t line_list;
@@ -58,7 +58,7 @@ typedef struct	s_main
     char			*comment;
     t_header		*header;
     unsigned char	*bytes;
-    int 			name_c;
+
 }				t_main;
 
 char				*some_modifying(char **res, char *s);
