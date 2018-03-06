@@ -3,29 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   to_file.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshevche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmelehov <dmelehov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:00:27 by dshevche          #+#    #+#             */
-/*   Updated: 2018/03/06 14:00:28 by dshevche         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:32:02 by dmelehov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "asm.h"
 
-
-
-
-char 	*get_name(char *name)
+char	*get_name(char *name)
 {
-	size_t 	i;
-	char *new_name;
-	int err_flag;
-	char *new_name_free;
+	size_t	i;
+	char	*new_name;
+	int		err_flag;
+	char	*new_name_free;
 
 	i = 0;
 	err_flag = 1;
-	while(name[i] && name[i] != '.')
+	while (name[i] && name[i] != '.')
 	{
 		i++;
 		if (name[i] == '.' && name[i + 1] == 's')
@@ -39,9 +35,7 @@ char 	*get_name(char *name)
 	new_name = ft_strjoin(new_name, ".cor\0");
 	free(new_name_free);
 	return (new_name);
-
 }
-
 
 int		write_in_file(line_list *file, t_main *main, char *filename)
 {
@@ -53,7 +47,7 @@ int		write_in_file(line_list *file, t_main *main, char *filename)
 		return (-1);
 	size_file = ft_get_max(file);
 	if ((fd = open(new_filename, O_WRONLY | O_CREAT | O_TRUNC,
-				   S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) == -1)
+				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) == -1)
 		return (ft_err("open", -1));
 	write(fd, main->header, sizeof(*main->header));
 	write(fd, main->bytes, (size_t)size_file);

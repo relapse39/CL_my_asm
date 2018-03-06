@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_type.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshevche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmelehov <dmelehov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:01:22 by dshevche          #+#    #+#             */
-/*   Updated: 2018/03/06 14:01:23 by dshevche         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:28:49 by dmelehov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "asm.h"
 
-
-
-
-void	ft_add_type(line_list *line,  int com_n, int type)
+void	ft_add_type(line_list *line, int com_n, int type)
 {
 	if (com_n == 0)
 		line->ent.f_type = type;
@@ -27,16 +22,15 @@ void	ft_add_type(line_list *line,  int com_n, int type)
 		line->ent.t_type = type;
 }
 
-
-int 	ft_is_reg(char *str)
+int		ft_is_reg(char *str)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	if (str[0] != 'r')
 		return (-1);
 	str++;
-	while(str[i])
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (-1);
@@ -45,7 +39,7 @@ int 	ft_is_reg(char *str)
 	return (1);
 }
 
-int 	ft_is_dir(char *str)
+int		ft_is_dir(char *str)
 {
 	int i;
 
@@ -57,7 +51,7 @@ int 	ft_is_dir(char *str)
 		return (1);
 	if (str[0] == '-')
 		str++;
-	while(str[i])
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (-1);
@@ -66,16 +60,16 @@ int 	ft_is_dir(char *str)
 	return (1);
 }
 
-int 	ft_is_ind(char *str)
+int		ft_is_ind(char *str)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
-	if(str[0] == ':')
+	if (str[0] == ':')
 		return (1);
 	if (str[0] == '-')
 		str++;
-	while(str[i])
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (-1);
@@ -84,12 +78,12 @@ int 	ft_is_ind(char *str)
 	return (1);
 }
 
-int 	ft_is_inst(char *str)
+int		ft_is_inst(char *str)
 {
 	int i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (!ft_isalnum(str[i]))
 			return (-1);
@@ -107,7 +101,8 @@ int		ft_get_type_param(line_list *line)
 	{
 		com_n = 0;
 		i = 0;
-		if (line->ent.com[0]!= NULL && line->ent.com[0][ft_strlen(line->ent.com[0]) - 1] == ':')
+		if (line->ent.com[0] != NULL &&
+			line->ent.com[0][ft_strlen(line->ent.com[0]) - 1] == ':')
 			i++;
 		i++;
 		while (line->ent.com[i - 1] && line->ent.com[i])
