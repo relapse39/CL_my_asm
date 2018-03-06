@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-void		ft_write(unsigned char *bytes, int code, int *i, int count)
+void			ft_write(unsigned char *bytes, int code, int *i, int count)
 {
 	if (count == 1)
 	{
@@ -37,34 +37,31 @@ void		ft_write(unsigned char *bytes, int code, int *i, int count)
 	}
 }
 
-static void		ft_arg_code(unsigned char *bytes, line_list *list, int *index)
+void			ft_arg_code(unsigned char *bytes, line_list *list, int *index)
 {
 	int			byte;
 
-	if (ft_is_need_arg_code(list->entry.com[0]) == 1)
-		return;
+	if (ft_is_need_arg_code(list->ent.com[0]) == 1)
+		return ;
 	byte = 0;
-	(list->entry.first_type == T_REG) ? (byte |= REG_MASK_1) : (0);
-	(list->entry.first_type == T_IND) ? (byte |= IND_MASK_1) : (0);
-	(list->entry.first_type == T_DIR) ? (byte |= DIR_MASK_1) : (0);
-	(list->entry.second_type == T_REG) ? (byte |= REG_MASK_2) : (0);
-	(list->entry.second_type == T_IND) ? (byte |= IND_MASK_2) : (0);
-	(list->entry.second_type == T_DIR) ? (byte |= DIR_MASK_2) : (0);
-	(list->entry.third_type == T_REG) ? (byte |= REG_MASK_3) : (0);
-	(list->entry.third_type == T_IND) ? (byte |= IND_MASK_3) : (0);
-	(list->entry.third_type == T_DIR) ? (byte |= DIR_MASK_3) : (0);
+	(list->ent.first_type == T_REG) ? (byte |= REG_MASK_1) : (0);
+	(list->ent.first_type == T_IND) ? (byte |= IND_MASK_1) : (0);
+	(list->ent.first_type == T_DIR) ? (byte |= DIR_MASK_1) : (0);
+	(list->ent.second_type == T_REG) ? (byte |= REG_MASK_2) : (0);
+	(list->ent.second_type == T_IND) ? (byte |= IND_MASK_2) : (0);
+	(list->ent.second_type == T_DIR) ? (byte |= DIR_MASK_2) : (0);
+	(list->ent.third_type == T_REG) ? (byte |= REG_MASK_3) : (0);
+	(list->ent.third_type == T_IND) ? (byte |= IND_MASK_3) : (0);
+	(list->ent.third_type == T_DIR) ? (byte |= DIR_MASK_3) : (0);
 	bytes[(*index)++] = byte;
 }
 
-
-
-static unsigned char	ft_get_op(char *inst, char *line)
+unsigned char	ft_get_op(char *inst, char *line)
 {
 	int			i;
 
 	i = -1;
-	while (g_op_tab[++i].name
-		   && ft_strcmp(inst, g_op_tab[i].name) != 0)
+	while (g_op_tab[++i].name && ft_strcmp(inst, g_op_tab[i].name) != 0)
 		;
 	if (g_op_tab[i].opcode == 0)
 	{
@@ -75,36 +72,30 @@ static unsigned char	ft_get_op(char *inst, char *line)
 		return (g_op_tab[i].opcode);
 }
 
-
-
-
-
-
-
-
-static int		ft_param_code(t_main *main, char **tab, int *index)
+int				ft_param_code(t_main *main, char **tab, int *index)
 {
-	int num;
+	int			num;
 
 	num = 1;
-	while(tab[num]) {
+	while (tab[num])
+	{
 		if (tab[num][0] == 'r')
 			ft_write(main->bytes, ft_atoi(&(tab[num][1])), index, 1);
 		else if (tab[num][0] != '%')
 			ft_write(main->bytes, ft_atoi(tab[num]), index, 2);
-		else if (tab[num][0] == '%') {
+		else if (tab[num][0] == '%')
+		{
 			if (ft_spec_case(tab[0], num) == 1)
 				ft_write(main->bytes, ft_atoi_1(&(tab[num][1])), index, 2);
-			else {
+			else
 				ft_write(main->bytes, ft_atoi(&(tab[num][1])), index, 4);
-			}
 		}
 		num += 1;
 	}
 	return (0);
 }
 
-int		ft_bytecode(line_list *list, t_main *main)
+int				ft_bytecode(line_list *list, t_main *main)
 {
 	int			i;
 	int			size;
@@ -113,20 +104,19 @@ int		ft_bytecode(line_list *list, t_main *main)
 	if ((main->bytes = (unsigned char*)malloc((size_t)size)) == NULL)
 		ft_err("malloc", -1);
 	i = -1;
-	while(++i < size)
+	while (++i < size)
 		main->bytes[i] = 0;
 	i = 0;
 	while (list)
 	{
-		if (ft_get_op(list->entry.com[0], list->entry.raw_line) == 0)
+		if (ft_get_op(list->ent.com[0], list->ent.raw_line) == 0)
 			return (-1);
 		else
-			main->bytes[i] = ft_get_op(list->entry.com[0], list->entry.raw_line);
+			main->bytes[i] = ft_get_op(list->ent.com[0], list->ent.raw_line);
 		i += 1;
-			ft_arg_code(main->bytes, list, &i);
-		ft_param_code(main, list->entry.com, &i);
+		ft_arg_code(main->bytes, list, &i);
+		ft_param_code(main, list->ent.com, &i);
 		list = list->next;
 	}
 	return (0);
 }
-
