@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="CL_my_asm"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/dmelehov/CLionProjects/ASM/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/dmelehov/CLionProjects/ASM/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/dmelehov/CLionProjects/ASM/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CL_my_asm">
+				<Option output="/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/CL_my_asm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/dmelehov/CLionProjects/ASM/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 CL_my_asm"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CL_my_asm/fast">
+				<Option output="/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/CL_my_asm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/dmelehov/CLionProjects/ASM/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 CL_my_asm/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/dmelehov/CLionProjects/ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/asm.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/barriere.s">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/bytecode.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/bytecode_help.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/clear_file.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/errors.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/get_pos.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/get_type.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/header.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/helper.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/helper2.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/includes/libft.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/additional/includes/additional.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/additional/src/ft_to_bin.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/array/includes/ft_array.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/array/src/ft_array_access.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/array/src/ft_array_capacity.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/array/src/ft_array_foreach.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/array/src/ft_array_init.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/array/src/ft_array_modifyer.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/includes/ctype_ft.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/src/ft_isalnum.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/src/ft_isalpha.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/src/ft_isascii.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/src/ft_isdigit.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/src/ft_islower.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/src/ft_isprint.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/src/ft_isupper.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/src/ft_tolower.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ctype/src/ft_toupper.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/error/includes/ft_errors.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/error/src/ft_error_mngr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/includes/ft_printf.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/includes/ft_printf_supported_functions.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_conv_cs.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_conv_diu.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_conv_fen.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_conv_ga.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_conv_pox.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_fillstruct.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_flagmanagement.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_formatparsing.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_formatparsing_additional.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_modifyers_management.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_parse_a.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_parse_colors.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_parse_floats.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_parse_floats2.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_printf.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_round_floats.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_sprintf.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_support_functions_1.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/ft_printf/src/ft_support_functions_2.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/get_next_line/includes/get_next_line.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/get_next_line/includes/gnl_prototype.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/get_next_line/src/get_next_line.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/includes/ft_mylist.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/includes/ft_mylist_cell.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/includes/ft_mylist_interval.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/includes/lists_ft.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_lstadd.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_lstdel.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_lstdelone.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_lstiter.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_lstmap.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_lstnew.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_access.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_capacity.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_cell.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_cell_count.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_find.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_insert.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_interval.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_modifier.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_operator.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_splice.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/lists/src/ft_mylist_split.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/includes/memory_ft.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_bzero.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_free_2d_array.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_malloc_s.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_memalloc.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_memccpy.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_memchr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_memcmp.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_memcpy.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_memdel.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_memmove.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_memset.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/memory/src/ft_realloc.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/includes/printing_ft.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/src/ft_putaddr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/src/ft_putchar.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/src/ft_putchar_fd.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/src/ft_putendl.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/src/ft_putendl_fd.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/src/ft_putnbr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/src/ft_putnbr_fd.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/src/ft_putstr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/printing/src/ft_putstr_fd.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/includes/string_ft.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_atoi.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_itoa.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strcat.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strchr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strclr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strcmp.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strcpy.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strdel.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strdup.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strequ.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_striter.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_striteri.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strjoin.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strlcat.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strlen.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strmap.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strmapi.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strncat.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strncmp.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strncpy.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strnequ.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strnew.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strnstr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strrchr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strsplit.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strstr.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strsub.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/libft/src/string/src/ft_strtrim.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/main.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/op.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/op.h">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/read.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/remove_lable.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/roller.s">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/split.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/to_file.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/validate.c">
+			<Option target="CL_my_asm"/>
+		</Unit>
+		<Unit filename="/Users/dmelehov/CLionProjects/ASM/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

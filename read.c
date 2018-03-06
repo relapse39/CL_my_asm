@@ -40,69 +40,6 @@ static line_list	*create_file(char *line, int nbr)
 	return (new);
 }
 
-//int check_quotes(char *s)
-//{
-//	int i;
-//	int j;
-//
-//	i = 0;
-//	j = 0;
-//	while (s[i])
-//	{
-//		if (s[i] == '"')
-//			j++;
-//	}
-//	return (j);
-//}
-//
-#define SKIP " /t/n/v/r"
-//
-//int	check_endofstr(char *str)
-//{
-//	int i;
-//	int j;
-//
-//	i = ft_strlen(str);
-//	while (str[j])
-//	{
-//		if (ft_strchr(SKIP, str[j]))
-//			j++;
-//		else
-//			break ;
-//	}
-//	if (i != j)
-//		return (j);
-//	return (0);
-//}
-//
-//char	*dochitat(int fd, int *nbr, char *str)
-//{
-//	char *s;
-//	char *s1;
-//
-//	s1 = ft_strjoin("", str);
-//	while (get_next_line(fd, &s))
-//	{
-//		s1 = ft_strjoin(s1, s);
-//		(*nbr)++;
-//		if (ft_strchr(s1, 34))
-//		{
-//			if (!check_endofstr(ft_strchr(s1, 34) + 1))
-//				return (s1);
-//			break ;
-//		}
-//		else
-//			s =
-//	}
-//	s = ft_strjoin(str, s);
-//}
-//
-
-
-//char 	*cut_string(char *s, int pos, )
-//{
-//
-//}
 
 int 	check_eos(char *s)
 {
