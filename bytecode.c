@@ -10,21 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "asm.h"
-
-
-//void		write_four_bytes(unsigned char *bytes,
-//							 int to_write,
-//							 int index)
-//{
-//	bytes[index] = (to_write >> 24);
-//	bytes[index + 1] =
-//			(to_write & 0b00000000111111110000000000000000) >> 16;
-//	bytes[index + 2] =
-//			(to_write & 0b00000000000000001111111100000000) >> 8;
-//	bytes[index + 3] = (to_write & 0b11111111);
-//}
 
 void		ft_write(unsigned char *bytes, int code, int *i, int count)
 {
@@ -50,7 +36,6 @@ void		ft_write(unsigned char *bytes, int code, int *i, int count)
 		*i += 4;
 	}
 }
-
 
 static void		ft_arg_code(unsigned char *bytes, line_list *list, int *index)
 {
@@ -102,8 +87,7 @@ int		ft_atoi_1(const char *str)
 	nbr = 0;
 	negative = 0;
 	i = 0;
-	while ((str[i] == '\n') || (str[i] == '\t') || (str[i] == '\v') ||
-		   (str[i] == ' ') || (str[i] == '\f') || (str[i] == '\r'))
+	while ((str[i] == '\t') || (str[i] == ' '))
 		i++;
 	if (str[i] == '-')
 		negative = 1;
@@ -114,12 +98,10 @@ int		ft_atoi_1(const char *str)
 		nbr *= 10;
 		nbr += (int)str[i] - '0';
 		if (nbr > MY_LONG_MAX)
-		{
 			if (negative)
 				return (0);
-			return (2147483647);
-		}
-
+			else
+				return (2147483647);
 		i++;
 	}
 	if (negative == 1)
