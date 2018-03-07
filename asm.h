@@ -57,9 +57,10 @@ typedef struct		s_main
 	unsigned char	*bytes;
 }					t_main;
 
+void				ft_add_space(char **str);
 char				*some_modifying(char **res, char *s);
 void				some_modifying_two(char *s, char *ptr, char **res);
-int					read_helper(t_line_list **list, char *str, int *nbr);
+int					read_helper(t_line_list **list, char **str, int *nbr);
 int					skip_wspcs(char *s);
 int					check_eos(char *s);
 t_line_list			*create_file(char *line, int nbr);

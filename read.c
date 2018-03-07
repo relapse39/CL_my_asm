@@ -89,6 +89,101 @@ void				ft_read_n_c(char *s, t_main *main, int fd, int *nbr)
 		M_ERROR(-1, "Not a valid sequence");
 }
 
+
+void			ft_add_space3(char **str)
+{
+	int 		i;
+	int 		j;
+	char		*res;
+
+	i = 0;
+	res = ft_strnew(ft_strlen(*str) + 2);
+//	res = (char*)malloc(sizeof((char)ft_strlen(*str) + 2));
+	while((*str)[i] != ':' && (*str)[i] != '%')
+	{
+		res[i] = (*str)[i];
+		i++;
+	}
+	res[i] = ' ';
+	j = i;
+	i++;
+	while((*str)[j])
+	{
+		res[i] = (*str)[j];
+		i++;
+		j++;
+	}
+	res[i] = '\0';
+	free(*str);
+	*str = res;
+}
+
+void			ft_add_space2(char **str)
+{
+	int 		i;
+	int 		j;
+	char 		*tmp;
+	int 		k;
+
+	i = 0;
+	k = 0;
+	while((*str)[i] != 0 && ((*str)[i] == '\t' || (*str)[i] == ' '))
+		i++;
+	j = i;
+	while((*str)[i] != ':' && (*str)[i] != '%' && (*str)[i] != 0)
+		i++;
+	if ((*str)[i] == ' ' || (*str)[i] == '\t')
+		return;
+	if (i < (int)ft_strlen(*str) - 1)
+	{
+		//tmp = (char*)malloc(sizeof((char)i + 2));
+		tmp = ft_strnew(i + 2);
+		while (j < i)
+		{
+			tmp[k] = (*str)[j];
+			j++;
+			k++;
+		}
+		tmp[k] = '\0';
+		i = 0;
+		while(g_op_tab[i].name)
+		{
+			if (ft_strequ(tmp, g_op_tab[i].name))
+			{
+				ft_add_space3(str);
+				free(tmp);
+				return;
+			}
+			i++;
+		}
+		free(tmp);
+	}
+}
+
+void			ft_add_space(char **str)
+{
+	char 		*tmp;
+	int 		i;
+
+	i = 0;
+	if(ft_is_label(*str))
+	{
+//		tmp = (char*)malloc(sizeof((char)ft_strlen(*str) + 2));
+		tmp = ft_strnew(ft_strlen(*str) + 2);
+		while((*str)[i])
+		{
+			tmp[i] = (*str)[i];
+			i++;
+		}
+		tmp[i] = ' ';
+		tmp[i + 1] = '\0';
+		free(*str);
+		*str = tmp;
+	}
+	else
+		ft_add_space2(str);
+}
+
 int					ft_read_file(char *name, t_line_list **list, t_main *main)
 {
 	int			fd;
@@ -98,7 +193,7 @@ int					ft_read_file(char *name, t_line_list **list, t_main *main)
 	*list = NULL;
 	nbr = 0;
 	if ((fd = open(name, O_RDONLY)) == -1)
-		return (ft_err("open", 0));
+		return (ft_err("open", -1));
 	while ((get_next_line(fd, &str)))
 	{
 		nbr++;
@@ -106,7 +201,7 @@ int					ft_read_file(char *name, t_line_list **list, t_main *main)
 		{
 			if (main->name == NULL || main->comment == NULL)
 				ft_read_n_c(str, main, fd, &nbr);
-			else if (read_helper(list, str, &nbr) == -1)
+			else if (read_helper(list, &str, &nbr) == -1)
 				return (-1);
 		}
 	}
@@ -116,3 +211,5 @@ int					ft_read_file(char *name, t_line_list **list, t_main *main)
 		return (ft_err("empty", -1));
 	return (0);
 }
+
+

@@ -27,18 +27,19 @@ int				skip_wspcs(char *s)
 	return (i);
 }
 
-int				read_helper(t_line_list **list, char *str, int *nbr)
+int				read_helper(t_line_list **list, char **str, int *nbr)
 {
 	t_line_list	*tmp;
 
 	tmp = *list;
+	ft_add_space(str);
 	if (tmp)
 	{
 		tmp = get_last(tmp);
-		if ((tmp->next = create_file(str, *nbr)) == NULL)
+		if ((tmp->next = create_file(*str, *nbr)) == NULL)
 			return (-1);
 	}
-	else if ((*list = create_file(str, *nbr)) == NULL)
+	else if ((*list = create_file(*str, *nbr)) == NULL)
 		return (-1);
 	return (0);
 }
