@@ -130,7 +130,7 @@ void			ft_add_space2(char **str)
 	while((*str)[i] != 0 && ((*str)[i] == '\t' || (*str)[i] == ' '))
 		i++;
 	j = i;
-	while((*str)[i] != ':' && (*str)[i] != '%' && (*str)[i] != 0)
+	while((*str)[i] != '%' && (*str)[i] != 0)
 		i++;
 	if ((*str)[i] == ' ' || (*str)[i] == '\t')
 		return;
