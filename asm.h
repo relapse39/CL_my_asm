@@ -31,6 +31,7 @@
 # define FOUR_BYTE_MASK_2 0b00000000000000001111111100000000
 # define FULL_BYTE 0b11111111
 # define MY_LONG_MAX 9223372036854775807
+# define FULL_INT 0xffffffff
 
 typedef struct		s_line{
 	char			*r_line;

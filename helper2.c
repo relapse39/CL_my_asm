@@ -40,7 +40,7 @@ int			ft_atoi_ret(int neg)
 	if (neg)
 		return (0);
 	else
-		return (2147483647);
+		return (FULL_INT);
 }
 
 int			ft_atoi_1(const char *str)
@@ -87,7 +87,7 @@ int			ft_check_label_char(t_line_list *list, int n)
 		if (ft_strchr(LABEL_CHARS, list->ent.com[n][i]) == 0)
 		{
 			pos = ft_get_pos(list->ent.r_line, list->ent.com[n]);
-			ft_printf("%s", list->ent.com[n]);
+			//ft_printf("%s", list->ent.com[n]);
 			ft_printf("Lexical error at [");
 			ft_printf("%d:", list->ent.nbr);
 			ft_printf("%d]\n", pos + i + 1);

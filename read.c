@@ -98,7 +98,6 @@ void			ft_add_space3(char **str)
 
 	i = 0;
 	res = ft_strnew(ft_strlen(*str) + 2);
-//	res = (char*)malloc(sizeof((char)ft_strlen(*str) + 2));
 	while((*str)[i] != ':' && (*str)[i] != '%')
 	{
 		res[i] = (*str)[i];
@@ -136,7 +135,6 @@ void			ft_add_space2(char **str)
 		return;
 	if (i < (int)ft_strlen(*str) - 1)
 	{
-		//tmp = (char*)malloc(sizeof((char)i + 2));
 		tmp = ft_strnew(i + 2);
 		while (j < i)
 		{
@@ -168,7 +166,6 @@ void			ft_add_space(char **str)
 	i = 0;
 	if(ft_is_label(*str))
 	{
-//		tmp = (char*)malloc(sizeof((char)ft_strlen(*str) + 2));
 		tmp = ft_strnew(ft_strlen(*str) + 2);
 		while((*str)[i])
 		{
@@ -182,6 +179,21 @@ void			ft_add_space(char **str)
 	}
 	else
 		ft_add_space2(str);
+}
+
+int					ft_check_len(t_main *main)
+{
+	if (ft_strlen(main->comment) > COMMENT_LENGTH)
+	{
+		ft_printf("Champion comment too long (Max length 2048)\n");
+		return (-1);
+	}
+	else if (ft_strlen(main->name) > PROG_NAME_LENGTH)
+	{
+		ft_printf("Champion name too long (Max length 128)\n");
+		return (-1);
+	}
+	return (0);
 }
 
 int					ft_read_file(char *name, t_line_list **list, t_main *main)
@@ -209,7 +221,7 @@ int					ft_read_file(char *name, t_line_list **list, t_main *main)
 	free(str);
 	if (*list == NULL)
 		return (ft_err("empty", -1));
-	return (0);
+	return (ft_check_len(main));
 }
 
 
