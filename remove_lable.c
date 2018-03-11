@@ -75,7 +75,7 @@ char			*ft_byte(t_line_list *list, t_line_list *tmp, int i, char *err)
 	ft_printf(" while attempting to dereference token [TOKEN]");
 	ft_printf("[%03d:%d]", tmp->ent.nbr, ft_get_pos(tmp->ent.r_line, err) + 1);
 	err[0] == '%' ? ft_printf(" ") : ft_printf(" IN");
-	ft_printf("DIRECT_LABEL %s\n", err);
+	ft_printf("DIRECT_LABEL \"%s\"\n", err);
 	return (NULL);
 }
 
@@ -113,14 +113,14 @@ int 			ft_check_first_label(t_line_list *list)
 	int 		i;
 	int 		pos;
 
-	while(list)
+	while (list)
 	{
 		if (ft_is_label(list->ent.com[0]))
 		{
 			i = 0;
-			while( i < (int)ft_strlen(list->ent.com[0]) - 1)
+			while (i < (int)ft_strlen(list->ent.com[0]) - 1)
 			{
-				if(ft_strchr(LABEL_CHARS, list->ent.com[0][i]) == 0)
+				if (ft_strchr(LABEL_CHARS, list->ent.com[0][i]) == 0)
 				{
 					pos = ft_get_pos(list->ent.r_line, list->ent.com[0]);
 					ft_printf("Lexical error at [");
