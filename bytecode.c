@@ -35,23 +35,6 @@ void			ft_write(unsigned char *bytes, int code, int *i, int count)
 		bytes[*i + 3] = (code & FULL_BYTE);
 		*i += 4;
 	}
-
-//	if (count == 1)
-//		bytes[*i] = ((size_t)code) % 256;
-//	else if (count == 2)
-//	{
-//		bytes[*i] = ((size_t)code) / 256;
-//		bytes[*i + 1] = ((size_t)code) % 256;
-//	}
-//	else if (count == 4)
-//	{
-//		bytes[*i] = ((size_t)code) / (256 * 256 * 256);
-//		bytes[*i + 1] = (((size_t)code) - bytes[*i] * 256 * 256 * 256)
-//					  / (256 * 256);
-//		bytes[*i + 2] = (((size_t)code) - bytes[*i + 1] * 256 * 256) / 256;
-//		bytes[*i + 3] = (((size_t)code) - bytes[*i + 2] * 256) % 256;
-//	}
-//	*i += count;
 }
 
 void			ft_arg_code(unsigned char *bytes, t_line_list *list, int *index)

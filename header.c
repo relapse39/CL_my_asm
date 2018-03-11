@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int		little_to_big_endian(int nb)
+int		l_to_b_endian(int nb)
 {
 	nb = ((nb << 8) & 0xFF00FF00) | ((nb >> 8) & 0xFF00FF);
 	return (nb << 16) | ((nb >> 16) & 0xFFFF);
@@ -50,8 +50,8 @@ int		get_header(t_main *main, int size)
 	while (i < head_size)
 		head_tmp[i++] = 0;
 	main->header->magic =
-	(unsigned int)little_to_big_endian(COREWAR_EXEC_MAGIC);
-	main->header->prog_size = (unsigned int)little_to_big_endian(size);
+	(unsigned int) l_to_b_endian(COREWAR_EXEC_MAGIC);
+	main->header->full_size = (unsigned int) l_to_b_endian(size);
 	ft_put_name_comment(main);
 	return (0);
 }
