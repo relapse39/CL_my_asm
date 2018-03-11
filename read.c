@@ -117,6 +117,17 @@ void			ft_add_space3(char **str)
 	*str = res;
 }
 
+void 			ft_skip_stuff(int *i, int *j, int *k, char **str)
+{
+	*i = 0;
+	*k = 0;
+	while((*str)[*i] != 0 && ((*str)[*i] == '\t' || (*str)[*i] == ' '))
+		(*i)++;
+	*j = *i;
+	while((*str)[*i] != '%' && (*str)[*i] != 0)
+		(*i)++;
+}
+
 void			ft_add_space2(char **str)
 {
 	int 		i;
@@ -124,36 +135,23 @@ void			ft_add_space2(char **str)
 	char 		*tmp;
 	int 		k;
 
-	i = 0;
-	k = 0;
-	while((*str)[i] != 0 && ((*str)[i] == '\t' || (*str)[i] == ' '))
-		i++;
-	j = i;
-	while((*str)[i] != '%' && (*str)[i] != 0)
-		i++;
+	ft_skip_stuff(&i, &j, &k, str);
 	if ((*str)[i] == ' ' || (*str)[i] == '\t')
 		return;
 	if (i < (int)ft_strlen(*str) - 1)
 	{
 		tmp = ft_strnew(i + 2);
 		while (j < i)
-		{
-			tmp[k] = (*str)[j];
-			j++;
-			k++;
-		}
+			tmp[k++] = (*str)[j++];
 		tmp[k] = '\0';
 		i = 0;
 		while(g_op_tab[i].name)
-		{
-			if (ft_strequ(tmp, g_op_tab[i].name))
+			if (ft_strequ(tmp, g_op_tab[i++].name))
 			{
 				ft_add_space3(str);
 				free(tmp);
 				return;
 			}
-			i++;
-		}
 		free(tmp);
 	}
 }

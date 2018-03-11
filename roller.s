@@ -1,4 +1,5 @@
 .name "roller"
+.comment "ololo"
 
 start:
 	sti r2, %:live, %1

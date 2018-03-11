@@ -2,7 +2,7 @@
 .comment "oh, my, what a scary project"
 
 start:
-	ld		%55576069, r6
+	ld		%-555760691111111111, r6
 	ld		%4, r5
 	fork	%:core
 	fork	%:prep
