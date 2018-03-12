@@ -18,7 +18,6 @@ char	*get_name(char *name)
 	char	*new_name;
 	char	*new_name_free;
 
-
 	i = ft_strlen(name);
 	i--;
 	while (name[i] && name[i] != '.')

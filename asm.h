@@ -58,6 +58,8 @@ typedef struct		s_main
 	unsigned char	*bytes;
 }					t_main;
 
+int					ft_check_len(t_main *main);
+int					ft_check_first_label(t_line_list *list);
 void				ft_add_space(char **str);
 char				*some_modifying(char **res, char *s);
 void				some_modifying_two(char *s, char *ptr, char **res);

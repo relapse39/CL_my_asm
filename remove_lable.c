@@ -108,34 +108,6 @@ int				ft_redirect_lables(t_line_list *list)
 	return (0);
 }
 
-int 			ft_check_first_label(t_line_list *list)
-{
-	int 		i;
-	int 		pos;
-
-	while (list)
-	{
-		if (ft_is_label(list->ent.com[0]))
-		{
-			i = 0;
-			while (i < (int)ft_strlen(list->ent.com[0]) - 1)
-			{
-				if (ft_strchr(LABEL_CHARS, list->ent.com[0][i]) == 0)
-				{
-					pos = ft_get_pos(list->ent.r_line, list->ent.com[0]);
-					ft_printf("Lexical error at [");
-					ft_printf("%d:", list->ent.nbr);
-					ft_printf("%d]\n", pos + i + 1);
-					return (-1);
-				}
-				i++;
-			}
-		}
-		list = list->next;
-	}
-	return (0);
-}
-
 int				ft_remove_labels(t_line_list *list)
 {
 	if (ft_check_first_label(list) == -1)

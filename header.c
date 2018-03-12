@@ -50,8 +50,8 @@ int		get_header(t_main *main, int size)
 	while (i < head_size)
 		head_tmp[i++] = 0;
 	main->header->magic =
-	(unsigned int) l_to_b_endian(COREWAR_EXEC_MAGIC);
-	main->header->full_size = (unsigned int) l_to_b_endian(size);
+	(unsigned int)l_to_b_endian(COREWAR_EXEC_MAGIC);
+	main->header->full_size = (unsigned int)l_to_b_endian(size);
 	ft_put_name_comment(main);
 	return (0);
 }
